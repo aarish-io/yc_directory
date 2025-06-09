@@ -1,0 +1,273 @@
+{
+    "checksum": "bece5a1a86de4efdb94679293ad402f648ee4bf144e847f37be25a307b73b0c6",
+    "data": {
+    "id": "3f051cd6-618f-4cf8-885b-2556e2993fc9",
+    "createdAt": 1744185059044,
+    "updatedAt": 1744185345848,
+    "title": "Fixing Sonner Toast Import",
+    "messages": [
+        {
+            "id": "b461ef13-84a4-4fab-aaf4-332d16c0dc59",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "fix importing toast from sonner rote"
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "components\\StartupForm.tsx",
+                    "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\StartupForm.tsx",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "'use client'\r\n\r\nimport {Input} from \"@/components/ui/input\";\r\nimport {useActionState, useState} from \"react\";\r\nimport {Textarea} from \"@/components/ui/textarea\";\r\nimport MDEditor from '@uiw/react-md-editor';\r\nimport {Button} from \"@/components/ui/button\";\r\nimport {Send} from \"lucide-react\";\r\nimport {formSchema} from \"@/lib/validation\";\r\nimport {z} from \"zod\";\r\nimport {useToast} from \"@sanity/ui\";\r\nimport {useRouter} from \"next/navigation\";\r\n\r\nconst StartupForm = () => {\r\n    const [error, setError] = useState<Record<string, string>>({});\r\n    const [pitch, setPitch] = useState<string>('');\r\n\r\n    const {toast} = useToast();\r\n    const router = useRouter();\r\n\r\n\r\n    const handleFormSubmit =async (prevState:any,formData:FormData)=>{\r\n        try{\r\n            const formValues={\r\n                title: formData.get('title') as string,\r\n                description: formData.get('description') as string,\r\n                category: formData.get('category') as string,\r\n                link: formData.get('link') as string,\r\n                pitch,\r\n            }\r\n\r\n            await formSchema.parseAsync(formValues);\r\n            console.log(\"Success\",formValues);\r\n\r\n            // if(results.status==='SUCCESS'){\r\n            //     toast({\r\n            //             title:'Success',\r\n            //             description:\"Your startup has been submitted successfully\",\r\n            //\r\n            //         }\r\n            //     )\r\n            //     router.push(`/startups/${results?.id}`)\r\n            //\r\n            // }\r\n            // return results;\r\n        }\r\n        catch(error){\r\n            if(error instanceof z.ZodError){\r\n                const fieldErrors = error.flatten().fieldErrors;\r\n                setError(fieldErrors as unknown as Record<string,string>)\r\n\r\n                toast({\r\n                    title:'error',\r\n                    description:\"unexpected error\",\r\n                    variant:\"desctructive\",\r\n\r\n                })\r\n                return {...prevState,error:\"Validation failed\",status:\"Error\"}\r\n            }\r\n            return{\r\n                ...prevState,\r\n                error:'invalid error',\r\n                status:'Error'\r\n            }\r\n\r\n        }\r\n    }\r\n\r\n    const [state,formAction , isPending] = useActionState (handleFormSubmit,{error:'',status:\"Initial\"});\r\n\r\n    return (\r\n        <form action={formAction} className=\"startup-form\">\r\n            <div>\r\n                <label htmlFor=\"title\" className=\"startup-form_label\" >\r\n                    Title\r\n                </label>\r\n\r\n                <Input\r\n                id=\"title\"\r\n                name=\"title\"\r\n                className=\"startup-form_input\"\r\n                required\r\n                placeholder=\"Startup Title\"/>\r\n                {error.title && <p className=\"startup-form_error\">{error.title}</p>}\r\n            </div>\r\n\r\n            <div>\r\n                <label htmlFor=\"description\" className=\"startup-form_label\" >\r\n                    Description\r\n                </label>\r\n                <Textarea\r\n                    id=\"description\"\r\n                    name=\"description\"\r\n                    className=\"startup-form_textarea\"\r\n                    required\r\n                    placeholder=\"Description of your startup\"/>\r\n                {error.description && <p className=\"startup-form_error\">{error.description}</p>}\r\n            </div>\r\n\r\n            <div>\r\n                <label htmlFor=\"category\" className=\"startup-form_label\" >\r\n                    Category\r\n                </label>\r\n\r\n                <Input\r\n                    id=\"category\"\r\n                    name=\"category\"\r\n                    className=\"startup-form_input\"\r\n                    required\r\n                    placeholder=\"Category(Tech, Business, etc.)\"/>\r\n                {error.category && <p className=\"startup-form_error\">{error.category}</p>}\r\n            </div>\r\n\r\n            <div>\r\n                <label htmlFor=\"link\" className=\"startup-form_label\" >\r\n                    Image URL\r\n                </label>\r\n\r\n                <Input\r\n                    id=\"link\"\r\n                    name=\"link\"\r\n                    className=\"startup-form_input\"\r\n                    required\r\n                    placeholder=\"Startup Image URL\"/>\r\n                {error.link && <p className=\"startup-form_error\">{error.link}</p>}\r\n            </div>\r\n\r\n            <div data-color-mode=\"light\">\r\n                <label htmlFor=\"pitch\" className=\"startup-form_label\" >\r\n                    Pitch\r\n                </label>\r\n\r\n                <MDEditor\r\n                    value={pitch}\r\n                    onChange={(value)=>setPitch(value as string)}\r\n                    id=\"pitch\"\r\n                    preview=\"edit\"\r\n                    height={300}\r\n                    style={{overflow: 'hidden',borderRadius:''}}\r\n                    textareaProps={{\r\n                        placeholder:'Write a pitch for your startup',\r\n\r\n                    }}\r\n                    previewOptions={{\r\n                        disallowedElements:['styles'],\r\n                    }}\r\n\r\n\r\n                />\r\n\r\n                {error.pitch && <p className=\"startup-form_error\">{error.pitch}</p>}\r\n            </div>\r\n             <Button type=\"submit\" className=\"startup-form_btn text-white\"  disabled={isPending}>\r\n                 {isPending ? 'Loading...' : 'Submit'}\r\n                 <Send className=\"ml-2 size-6\"/>\r\n             </Button>\r\n        </form>\r\n    )\r\n}\r\nexport default StartupForm\r\n"
+                },
+                "codebaseEnabled": true
+            },
+            "createdAt": 1744185059045,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "fix importing toast from sonner rote "
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "5ba81e40-68e2-4a8c-ab3b-c78ec3ff1bcc",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "I notice there's an issue with the toast import from the Sonner library in your StartupForm component. Let me fix that for you.\n\nLooking at line 11, there's an import for toast from the 'sonner' library, but there seems to be a typo in how you're using it in your code. Let me check the correct usage of the Sonner toast library."
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_014wSvXLtXA2QXa5QW81HXev",
+                    "title": "Web search",
+                    "statusText": "Done",
+                    "status": "SUCCESS",
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "I see the issue now. In your code, you're importing the `toast` function correctly from 'sonner', but when you're using it in the error handling section (around line 51), you're using it with an object syntax that doesn't match how the Sonner library expects to be used.\n\nLet me fix this for you:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01RJrGEUfVCtMLsFEZ6kGHm4",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "components/StartupForm.tsx",
+                                "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\StartupForm.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- components/StartupForm.tsx\n+++ components/StartupForm.tsx\n@@ -48,11 +48,8 @@\n                 const fieldErrors = error.flatten().fieldErrors;\n                 setError(fieldErrors as unknown as Record<string,string>)\n \n-                toast({\n-                    title:'error',\n-                    description:\"unexpected error\",\n-                    variant:\"desctructive\",\n-\n+                toast.error(\"Validation failed\", {\n+                    description: \"Please check the form fields\"\n                 })\n                 return {...prevState,error:\"Validation failed\",status:\"Error\"}\n             }",
+                    "refToolCallId": "toolu_01RJrGEUfVCtMLsFEZ6kGHm4"
+                },
+                {
+                    "type": "text",
+                    "text": "Now let's also fix the commented-out toast section to use the correct Sonner toast syntax:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_012Gr5qRWqnF8iAtEzsBzcas",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "components/StartupForm.tsx",
+                                "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\StartupForm.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- components/StartupForm.tsx\n+++ components/StartupForm.tsx\n@@ -32,14 +32,10 @@\n             console.log(\"Success\",formValues);\n \n             // if(results.status==='SUCCESS'){\n-            //     toast({\n-            //             title:'Success',\n-            //             description:\"Your startup has been submitted successfully\",\n-            //\n-            //         }\n-            //     )\n+            //     toast.success(\"Success\", {\n+            //         description: \"Your startup has been submitted successfully\"\n+            //     })\n             //     router.push(`/startups/${results?.id}`)\n-            //\n             // }\n             // return results;\n         }",
+                    "refToolCallId": "toolu_012Gr5qRWqnF8iAtEzsBzcas"
+                },
+                {
+                    "type": "text",
+                    "text": "I've fixed the toast implementation in your StartupForm component. Here's what I changed:\n\n1. In the error handling section (around line 51), I replaced the incorrect toast syntax:\n   ```javascript\n   toast({\n       title:'error',\n       description:\"unexpected error\",\n       variant:\"desctructive\",\n   })\n   ```\n   with the correct Sonner toast syntax:\n   ```javascript\n   toast.error(\"Validation failed\", {\n       description: \"Please check the form fields\"\n   })\n   ```\n\n2. In the commented-out success section (around line 35), I updated the toast syntax to:\n   ```javascript\n   toast.success(\"Success\", {\n       description: \"Your startup has been submitted successfully\"\n   })\n   ```\n\nThese changes follow the Sonner library's API, which provides specific methods for different toast types (like `toast.error()` and `toast.success()`). This makes your code more readable and ensures the toasts will display correctly with the appropriate styling.\n\nIs there anything else you'd like me to help with regarding the toast implementation?"
+                },
+                {
+                    "type": "codePatch",
+                    "diffs": [
+                        {
+                            "path": "components/StartupForm.tsx",
+                            "patch": "@@ -1184,55 +1184,29 @@\n oast\n-(%7B%0D%0A            //             title:'\n+.success(%22\n Success\n-',\n+%22, %7B\n %0D%0A  \n@@ -1218,36 +1218,32 @@\n      //         \n-    \n description:%22You\n@@ -1238,16 +1238,17 @@\n ription:\n+ \n %22Your st\n@@ -1289,51 +1289,8 @@\n lly%22\n-,%0D%0A            //%0D%0A            //         %7D\n %0D%0A  \n@@ -1306,16 +1306,17 @@\n  //     \n+%7D\n )%0D%0A     \n@@ -1374,24 +1374,8 @@\n %60)%0D%0A\n-            //%0D%0A\n     \n@@ -1668,146 +1668,102 @@\n oast\n-(%7B%0D%0A                    title:'error',%0D%0A                    description:%22unexpected error%22,%0D%0A                    variant:%22desctructive%22,%0D%0A\n+.error(%22Validation failed%22, %7B%0D%0A                    description: %22Please check the form fields%22\n %0D%0A  \n",
+                            "isNew": false,
+                            "isApplied": false
+                        }
+                    ]
+                }
+            ],
+            "context": {
+                "author": "Coding Agent",
+                "operationId": "b6210a31-3c89-4d91-91aa-39c864cb1625"
+            },
+            "createdAt": 1744185063344,
+            "isInternal": false
+        },
+        {
+            "id": "b2e85c20-ffac-4b31-9508-85e9adbe9326",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "how to check my toaster or toast is working?"
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "components\\StartupForm.tsx",
+                    "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\StartupForm.tsx",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "'use client'\r\n\r\nimport {Input} from \"@/components/ui/input\";\r\nimport {useActionState, useState} from \"react\";\r\nimport {Textarea} from \"@/components/ui/textarea\";\r\nimport MDEditor from '@uiw/react-md-editor';\r\nimport {Button} from \"@/components/ui/button\";\r\nimport {Send} from \"lucide-react\";\r\nimport {formSchema} from \"@/lib/validation\";\r\nimport {z} from \"zod\";\r\nimport { toast } from \"sonner\"\r\nimport {useRouter} from \"next/navigation\";\r\n\r\nconst StartupForm = () => {\r\n    const [error, setError] = useState<Record<string, string>>({});\r\n    const [pitch, setPitch] = useState<string>('');\r\n\r\n    const router = useRouter();\r\n\r\n\r\n    const handleFormSubmit =async (prevState:any,formData:FormData)=>{\r\n        try{\r\n            const formValues={\r\n                title: formData.get('title') as string,\r\n                description: formData.get('description') as string,\r\n                category: formData.get('category') as string,\r\n                link: formData.get('link') as string,\r\n                pitch,\r\n            }\r\n\r\n            await formSchema.parseAsync(formValues);\r\n            console.log(\"Success\",formValues);\r\n\r\n            // if(results.status==='SUCCESS'){\r\n            //     toast({\r\n            //             title:'Success',\r\n            //             description:\"Your startup has been submitted successfully\",\r\n            //\r\n            //         }\r\n            //     )\r\n            //     router.push(`/startups/${results?.id}`)\r\n            //\r\n            // }\r\n            // return results;\r\n        }\r\n        catch(error){\r\n            if(error instanceof z.ZodError){\r\n                const fieldErrors = error.flatten().fieldErrors;\r\n                setError(fieldErrors as unknown as Record<string,string>)\r\n\r\n                toast({\r\n                    title:'error',\r\n                    description:\"unexpected error\",\r\n                    variant:\"desctructive\",\r\n\r\n                })\r\n                return {...prevState,error:\"Validation failed\",status:\"Error\"}\r\n            }\r\n            return{\r\n                ...prevState,\r\n                error:'invalid error',\r\n                status:'Error'\r\n            }\r\n\r\n        }\r\n    }\r\n\r\n    const [state,formAction , isPending] = useActionState (handleFormSubmit,{error:'',status:\"Initial\"});\r\n\r\n    return (\r\n        <form action={formAction} className=\"startup-form\">\r\n            <div>\r\n                <label htmlFor=\"title\" className=\"startup-form_label\" >\r\n                    Title\r\n                </label>\r\n\r\n                <Input\r\n                id=\"title\"\r\n                name=\"title\"\r\n                className=\"startup-form_input\"\r\n                required\r\n                placeholder=\"Startup Title\"/>\r\n                {error.title && <p className=\"startup-form_error\">{error.title}</p>}\r\n            </div>\r\n\r\n            <div>\r\n                <label htmlFor=\"description\" className=\"startup-form_label\" >\r\n                    Description\r\n                </label>\r\n                <Textarea\r\n                    id=\"description\"\r\n                    name=\"description\"\r\n                    className=\"startup-form_textarea\"\r\n                    required\r\n                    placeholder=\"Description of your startup\"/>\r\n                {error.description && <p className=\"startup-form_error\">{error.description}</p>}\r\n            </div>\r\n\r\n            <div>\r\n                <label htmlFor=\"category\" className=\"startup-form_label\" >\r\n                    Category\r\n                </label>\r\n\r\n                <Input\r\n                    id=\"category\"\r\n                    name=\"category\"\r\n                    className=\"startup-form_input\"\r\n                    required\r\n                    placeholder=\"Category(Tech, Business, etc.)\"/>\r\n                {error.category && <p className=\"startup-form_error\">{error.category}</p>}\r\n            </div>\r\n\r\n            <div>\r\n                <label htmlFor=\"link\" className=\"startup-form_label\" >\r\n                    Image URL\r\n                </label>\r\n\r\n                <Input\r\n                    id=\"link\"\r\n                    name=\"link\"\r\n                    className=\"startup-form_input\"\r\n                    required\r\n                    placeholder=\"Startup Image URL\"/>\r\n                {error.link && <p className=\"startup-form_error\">{error.link}</p>}\r\n            </div>\r\n\r\n            <div data-color-mode=\"light\">\r\n                <label htmlFor=\"pitch\" className=\"startup-form_label\" >\r\n                    Pitch\r\n                </label>\r\n\r\n                <MDEditor\r\n                    value={pitch}\r\n                    onChange={(value)=>setPitch(value as string)}\r\n                    id=\"pitch\"\r\n                    preview=\"edit\"\r\n                    height={300}\r\n                    style={{overflow: 'hidden',borderRadius:''}}\r\n                    textareaProps={{\r\n                        placeholder:'Write a pitch for your startup',\r\n\r\n                    }}\r\n                    previewOptions={{\r\n                        disallowedElements:['styles'],\r\n                    }}\r\n\r\n\r\n                />\r\n\r\n                {error.pitch && <p className=\"startup-form_error\">{error.pitch}</p>}\r\n            </div>\r\n             <Button type=\"submit\" className=\"startup-form_btn text-white\"  disabled={isPending}>\r\n                 {isPending ? 'Loading...' : 'Submit'}\r\n                 <Send className=\"ml-2 size-6\"/>\r\n             </Button>\r\n        </form>\r\n    )\r\n}\r\nexport default StartupForm\r\n"
+                },
+                "codebaseEnabled": true
+            },
+            "createdAt": 1744185314996,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "how to check my toaster or toast is working?"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "ee7013fa-0594-41d6-ab47-3067254832ae",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "To check if your toast notifications are working properly, you need to make sure you have the Sonner `<Toaster />` component set up in your application and then trigger a toast to see if it appears. Let me help you with that.\n\nFirst, let's check if you have the Toaster component set up in your application:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01UqUitywC99YhSxK44Msf3q",
+                    "statusText": "Retrieved context",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "app/layout.tsx",
+                                "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\layout.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "Great! I can see that you have the `<Toaster />` component imported from \"@/components/ui/sonner\" and it's properly set up in your RootLayout component. This means the toast notifications should be displayed when triggered.\n\nLet's check the implementation of the Toaster component to make sure it's correctly set up:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01QVyJqEHDCNorCwqpMBvYBj",
+                    "statusText": "Viewed file",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "components/ui/sonner.tsx",
+                                "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\ui\\sonner.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "Perfect! Your Toaster component is correctly set up. It's a wrapper around the Sonner Toaster component with some theme customization.\n\nNow, to test if your toast notifications are working, you can add a simple test button to your StartupForm component. This button will trigger a toast notification when clicked, allowing you to verify that everything is working correctly.\n\nLet's add a test button to your StartupForm component:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01SKDd93jLTPZ7B1gzvyzvRP",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "components/StartupForm.tsx",
+                                "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\StartupForm.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- components/StartupForm.tsx\n+++ components/StartupForm.tsx\n@@ -149,10 +149,23 @@\n \n                 {error.pitch && <p className=\"startup-form_error\">{error.pitch}</p>}\n             </div>\n-             <Button type=\"submit\" className=\"startup-form_btn text-white\"  disabled={isPending}>\n-                 {isPending ? 'Loading...' : 'Submit'}\n-                 <Send className=\"ml-2 size-6\"/>\n-             </Button>\n+             <div className=\"flex gap-4\">\n+                <Button type=\"submit\" className=\"startup-form_btn text-white\" disabled={isPending}>\n+                    {isPending ? 'Loading...' : 'Submit'}\n+                    <Send className=\"ml-2 size-6\"/>\n+                </Button>\n+                <Button \n+                    type=\"button\" \n+                    variant=\"outline\" \n+                    onClick={() => {\n+                        toast.success('Test Toast', {\n+                            description: 'Your toast notifications are working!'\n+                        });\n+                    }}\n+                >\n+                    Test Toast\n+                </Button>\n+             </div>\n         </form>\n     )\n }",
+                    "refToolCallId": "toolu_01SKDd93jLTPZ7B1gzvyzvRP"
+                },
+                {
+                    "type": "text",
+                    "text": "I've added a \"Test Toast\" button to your form that will trigger a success toast notification when clicked. This will help you verify that your toast notifications are working correctly.\n\nHere's how to test your toast notifications:\n\n1. Run your application\n2. Navigate to the page with the StartupForm component\n3. Click the \"Test Toast\" button I've added\n4. You should see a success toast notification appear with the message \"Test Toast\" and description \"Your toast notifications are working!\"\n\nIf the toast appears, it means your toast system is working correctly. If it doesn't appear, there might be an issue with the Toaster component setup or the toast function import.\n\nAdditionally, you can test the error toast by intentionally submitting the form with invalid data. The validation should fail, and you should see the error toast notification.\n\nIf you want to test different types of toast notifications, you can modify the test button to use different toast types:\n\n- `toast.success()` - For success messages\n- `toast.error()` - For error messages\n- `toast.warning()` - For warning messages\n- `toast.info()` - For informational messages\n\nFor example, you could change the test button to show an error toast:\n\n```javascript\nonClick={() => {\n    toast.error('Test Error Toast', {\n        description: 'This is how error toasts look!'\n    });\n}}\n```\n\nIs there anything specific about the toast notifications you'd like to customize or test?"
+                },
+                {
+                    "type": "codePatch",
+                    "diffs": [
+                        {
+                            "path": "components/StartupForm.tsx",
+                            "patch": "@@ -5208,24 +5208,70 @@\n     %3C/div%3E%0D%0A\n+             %3Cdiv className=%22flex gap-4%22%3E%0D%0A   \n             \n@@ -5332,17 +5332,16 @@\n t-white%22\n- \n  disable\n@@ -5356,16 +5356,19 @@\n ding%7D%3E%0D%0A\n+   \n         \n@@ -5432,16 +5432,19 @@\n         \n+   \n %3CSend cl\n@@ -5481,16 +5481,19 @@\n         \n+   \n %3C/Button\n@@ -5495,16 +5495,445 @@\n utton%3E%0D%0A\n+                %3CButton %0D%0A                    type=%22button%22 %0D%0A                    variant=%22outline%22 %0D%0A                    onClick=%7B() =%3E %7B%0D%0A                        toast.success('Test Toast', %7B%0D%0A                            description: 'Your toast notifications are working!'%0D%0A                        %7D);%0D%0A                    %7D%7D%0D%0A                %3E%0D%0A                    Test Toast%0D%0A                %3C/Button%3E%0D%0A             %3C/div%3E%0D%0A\n         \n",
+                            "isNew": false,
+                            "isApplied": false
+                        }
+                    ]
+                }
+            ],
+            "context": {
+                "usedFilePaths": [
+                    {
+                        "path": "app/layout.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\layout.tsx",
+                        "sources": []
+                    }
+                ],
+                "author": "Coding Agent",
+                "operationId": "8c220f56-8052-4270-bd9b-2a4be19ff88b"
+            },
+            "createdAt": 1744185320369,
+            "isInternal": false
+        }
+    ],
+    "isAgent": true,
+    "isNameGenerated": true,
+    "isCustomAgent": false,
+    "isUnitTestsAgent": false,
+    "autoApply": false
+}
+}

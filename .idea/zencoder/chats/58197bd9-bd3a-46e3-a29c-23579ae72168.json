@@ -1,0 +1,255 @@
+{
+    "checksum": "6ccc0ab02b137804775207b6cfa192e2bec12030b34b3139bd1c484423acebfb",
+    "data": {
+    "id": "58197bd9-bd3a-46e3-a29c-23579ae72168",
+    "createdAt": 1744268347770,
+    "updatedAt": 1744269133235,
+    "title": "i cant submit the form chech wehere im facing i...",
+    "messages": [
+        {
+            "id": "14b1d937-d3de-4351-8e93-514c2079add7",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "i cant submit the form chech wehere im facing issues, u can refer to yc_directory-main for refernece as its my tutors code in there and check where potential errors might be if u couldnt find them on ur own"
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "components\\StartupForm.tsx",
+                    "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\StartupForm.tsx",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "'use client'\r\n\r\nimport {Input} from \"@/components/ui/input\";\r\nimport {useActionState, useState} from \"react\";\r\nimport {Textarea} from \"@/components/ui/textarea\";\r\nimport MDEditor from '@uiw/react-md-editor';\r\nimport {Button} from \"@/components/ui/button\";\r\nimport {Send} from \"lucide-react\";\r\nimport {formSchema} from \"@/lib/validation\";\r\nimport {z} from \"zod\";\r\nimport {toast} from \"sonner\";\r\nimport {useRouter} from \"next/navigation\";\r\nimport {createPitch} from \"@/lib/action\";\r\n\r\nconst StartupForm = () => {\r\n    const [error, setError] = useState<Record<string, string>>({});\r\n    const [pitch, setPitch] = useState<string>('');\r\n\r\n    const router = useRouter();\r\n\r\n\r\n    const handleFormSubmit = async (prevState:any, formData:FormData) => {\r\n        try {\r\n            const formValues = {\r\n                title: formData.get('title') as string,\r\n                description: formData.get('description') as string,\r\n                category: formData.get('category') as string,\r\n                link: formData.get('link') as string,\r\n                pitch,\r\n            }\r\n\r\n            await formSchema.parseAsync(formValues);\r\n            const result = createPitch()\r\n            \r\n            // Show success toast\r\n            toast.success(\"Success\", {\r\n                description: \"Your startup has been submitted successfully\"\r\n            });\r\n            \r\n            // Here you would typically send the data to your backend\r\n            // const results = await submitToBackend(formValues);\r\n            \r\n            // For now, just return a success state to prevent form data from disappearing\r\n            return {\r\n                ...prevState,\r\n                status: \"SUCCESS\",\r\n                data: formValues\r\n            };\r\n            \r\n            // Uncomment when you have backend integration\r\n            // if(results.status === 'SUCCESS') {\r\n            //     router.push(`/startups/${results?.id}`);\r\n            // }\r\n            // return results;\r\n        }\r\n        catch(error) {\r\n            if(error instanceof z.ZodError) {\r\n                const fieldErrors = error.flatten().fieldErrors;\r\n                setError(fieldErrors as unknown as Record<string, string>);\r\n\r\n                toast.error(\"Validation failed\", {\r\n                    description: \"Please check the form fields\"\r\n                });\r\n                return {\r\n                    ...prevState, \r\n                    error: \"Validation failed\", \r\n                    status: \"ERROR\"\r\n                };\r\n            }\r\n            \r\n            toast.error(\"Submission error\", {\r\n                description: \"An unexpected error occurred\"\r\n            });\r\n            \r\n            return {\r\n                ...prevState,\r\n                error: 'Unexpected error',\r\n                status: 'ERROR'\r\n            };\r\n        }\r\n    }\r\n\r\n    const [state,formAction , isPending] = useActionState (handleFormSubmit,{error:'',status:\"Initial\"});\r\n\r\n    return (\r\n        <form action={formAction} className=\"startup-form\">\r\n            <div>\r\n                <label htmlFor=\"title\" className=\"startup-form_label\" >\r\n                    Title\r\n                </label>\r\n\r\n                <Input\r\n                id=\"title\"\r\n                name=\"title\"\r\n                className=\"startup-form_input\"\r\n                required\r\n                placeholder=\"Startup Title\"/>\r\n                {error.title && <p className=\"startup-form_error\">{error.title}</p>}\r\n            </div>\r\n\r\n            <div>\r\n                <label htmlFor=\"description\" className=\"startup-form_label\" >\r\n                    Description\r\n                </label>\r\n                <Textarea\r\n                    id=\"description\"\r\n                    name=\"description\"\r\n                    className=\"startup-form_textarea\"\r\n                    required\r\n                    placeholder=\"Description of your startup\"/>\r\n                {error.description && <p className=\"startup-form_error\">{error.description}</p>}\r\n            </div>\r\n\r\n            <div>\r\n                <label htmlFor=\"category\" className=\"startup-form_label\" >\r\n                    Category\r\n                </label>\r\n\r\n                <Input\r\n                    id=\"category\"\r\n                    name=\"category\"\r\n                    className=\"startup-form_input\"\r\n                    required\r\n                    placeholder=\"Category(Tech, Business, etc.)\"/>\r\n                {error.category && <p className=\"startup-form_error\">{error.category}</p>}\r\n            </div>\r\n\r\n            <div>\r\n                <label htmlFor=\"link\" className=\"startup-form_label\" >\r\n                    Image URL\r\n                </label>\r\n\r\n                <Input\r\n                    id=\"link\"\r\n                    name=\"link\"\r\n                    className=\"startup-form_input\"\r\n                    required\r\n                    placeholder=\"Startup Image URL\"/>\r\n                {error.link && <p className=\"startup-form_error\">{error.link}</p>}\r\n            </div>\r\n\r\n            <div data-color-mode=\"light\">\r\n                <label htmlFor=\"pitch\" className=\"startup-form_label\" >\r\n                    Pitch\r\n                </label>\r\n\r\n                <MDEditor\r\n                    value={pitch}\r\n                    onChange={(value)=>setPitch(value as string)}\r\n                    id=\"pitch\"\r\n                    preview=\"edit\"\r\n                    height={300}\r\n                    style={{overflow: 'hidden',borderRadius:''}}\r\n                    textareaProps={{\r\n                        placeholder:'Write a pitch for your startup',\r\n\r\n                    }}\r\n                    previewOptions={{\r\n                        disallowedElements:['styles'],\r\n                    }}\r\n\r\n\r\n                />\r\n\r\n                {error.pitch && <p className=\"startup-form_error\">{error.pitch}</p>}\r\n            </div>\r\n             <Button type=\"submit\" className=\"startup-form_btn text-white\"  disabled={isPending}>\r\n                 {isPending ? 'Loading...' : 'Submit'}\r\n                 <Send className=\"ml-2 size-6\"/>\r\n             </Button>\r\n        </form>\r\n    )\r\n}\r\nexport default StartupForm\r\n"
+                },
+                "codebaseEnabled": true
+            },
+            "createdAt": 1744268347773,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "i cant submit the form chech wehere im facing issues, u can refer to yc_directory-main for refernece as its my tutors code in there and check where potential errors might be if u couldnt find them on ur own"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "b188000f-90bd-4ccb-a8dd-18e8b48fa101",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "I'll help you troubleshoot the form submission issue. Let me first examine your current code and then check the reference code to identify potential problems.\n\nLet's start by looking at the imports in your StartupForm component:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01N6WZhXDE1qzGKyuHC78jJs",
+                    "statusText": "Viewed file",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "components/StartupForm.tsx",
+                                "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\StartupForm.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "I notice a potential issue with the import statement. Let's check if `useActionState` is correctly imported. This hook is from Next.js server actions, but the import looks unusual. Let me check the reference code to see how it's implemented there:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01R6UxykYKMTYsGwZW5zmWqE",
+                    "statusText": "No references found",
+                    "status": "SUCCESS",
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "Let me check the reference code's StartupForm component:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_018sxkGcBUDn7sfUwKFKEiqY",
+                    "title": "",
+                    "statusText": "File not found",
+                    "status": "WARNING",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "-main/components/StartupForm.tsx",
+                                "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\-main\\components\\StartupForm.tsx"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "Let me search for the reference StartupForm file:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_019zyukLuUE2cA21SNZcBB6E",
+                    "statusText": "No references found",
+                    "status": "SUCCESS",
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "Let's check the structure of the reference directory:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_011zXnKsHtvk1eTr6ZUJrn3Z",
+                    "title": "",
+                    "statusText": "File not found",
+                    "status": "WARNING",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "-main",
+                                "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\-main"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "Let me check if the reference directory exists:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01YAbuazVCP8cUP8G3kZXAjf",
+                    "title": "",
+                    "statusText": "Failed",
+                    "status": "ERROR",
+                    "isHidden": false
+                }
+            ],
+            "context": {
+                "author": "Coding Agent",
+                "operationId": "6e1759f1-f4f4-413f-a5c7-c468c8d73817"
+            },
+            "createdAt": 1744268353407,
+            "isInternal": false
+        },
+        {
+            "id": "98da1338-8f93-40ee-a414-d54e36f59647",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "i cant submit the startup maybe theres some issue check it out"
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "components\\StartupForm.tsx",
+                    "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\StartupForm.tsx",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "'use client'\r\n\r\nimport {Input} from \"@/components/ui/input\";\r\nimport {useActionState, useState} from \"react\";\r\nimport {Textarea} from \"@/components/ui/textarea\";\r\nimport MDEditor from '@uiw/react-md-editor';\r\nimport {Button} from \"@/components/ui/button\";\r\nimport {Send} from \"lucide-react\";\r\nimport {formSchema} from \"@/lib/validation\";\r\nimport {z} from \"zod\";\r\nimport {toast} from \"sonner\";\r\nimport {useRouter} from \"next/navigation\";\r\nimport {createPitch} from \"@/lib/action\";\r\n\r\nconst StartupForm = () => {\r\n    const [error, setError] = useState<Record<string, string>>({});\r\n    const [pitch, setPitch] = useState<string>('');\r\n\r\n    const router = useRouter();\r\n\r\n\r\n    const handleFormSubmit = async (prevState:any, formData:FormData) => {\r\n        try {\r\n            const formValues = {\r\n                title: formData.get('title') as string,\r\n                description: formData.get('description') as string,\r\n                category: formData.get('category') as string,\r\n                link: formData.get('link') as string,\r\n                pitch,\r\n            }\r\n\r\n            await formSchema.parseAsync(formValues);\r\n\r\n            const results =await createPitch(prevState,formData,pitch);\r\n            \r\n\r\n            if(results.status === 'SUCCESS') {\r\n                toast.success(\"Sucess\",{\r\n                    description: \"Your startup has been submitted successfully\"\r\n                })\r\n            }\r\n            router.push(`/startups/${results?._id}`);\r\n            return results;\r\n        }\r\n        catch(error) {\r\n            if(error instanceof z.ZodError) {\r\n                const fieldErrors = error.flatten().fieldErrors;\r\n                setError(fieldErrors as unknown as Record<string, string>);\r\n\r\n                toast.error(\"Validation failed\", {\r\n                    description: \"Please check the form fields\"\r\n                });\r\n                return {\r\n                    ...prevState, \r\n                    error: \"Validation failed\", \r\n                    status: \"ERROR\"\r\n                };\r\n            }\r\n            \r\n            toast.error(\"Submission error\", {\r\n                description: \"An unexpected error occurred\"\r\n            });\r\n            \r\n            return {\r\n                ...prevState,\r\n                error: 'Unexpected error',\r\n                status: 'ERROR'\r\n            };\r\n        }\r\n    }\r\n\r\n    const [state,formAction , isPending] = useActionState (handleFormSubmit,{error:'',status:\"Initial\"});\r\n\r\n    return (\r\n        <form action={formAction} className=\"startup-form\">\r\n            <div>\r\n                <label htmlFor=\"title\" className=\"startup-form_label\" >\r\n                    Title\r\n                </label>\r\n\r\n                <Input\r\n                id=\"title\"\r\n                name=\"title\"\r\n                className=\"startup-form_input\"\r\n                required\r\n                placeholder=\"Startup Title\"/>\r\n                {error.title && <p className=\"startup-form_error\">{error.title}</p>}\r\n            </div>\r\n\r\n            <div>\r\n                <label htmlFor=\"description\" className=\"startup-form_label\" >\r\n                    Description\r\n                </label>\r\n                <Textarea\r\n                    id=\"description\"\r\n                    name=\"description\"\r\n                    className=\"startup-form_textarea\"\r\n                    required\r\n                    placeholder=\"Description of your startup\"/>\r\n                {error.description && <p className=\"startup-form_error\">{error.description}</p>}\r\n            </div>\r\n\r\n            <div>\r\n                <label htmlFor=\"category\" className=\"startup-form_label\" >\r\n                    Category\r\n                </label>\r\n\r\n                <Input\r\n                    id=\"category\"\r\n                    name=\"category\"\r\n                    className=\"startup-form_input\"\r\n                    required\r\n                    placeholder=\"Category(Tech, Business, etc.)\"/>\r\n                {error.category && <p className=\"startup-form_error\">{error.category}</p>}\r\n            </div>\r\n\r\n            <div>\r\n                <label htmlFor=\"link\" className=\"startup-form_label\" >\r\n                    Image URL\r\n                </label>\r\n\r\n                <Input\r\n                    id=\"link\"\r\n                    name=\"link\"\r\n                    className=\"startup-form_input\"\r\n                    required\r\n                    placeholder=\"Startup Image URL\"/>\r\n                {error.link && <p className=\"startup-form_error\">{error.link}</p>}\r\n            </div>\r\n\r\n            <div data-color-mode=\"light\">\r\n                <label htmlFor=\"pitch\" className=\"startup-form_label\" >\r\n                    Pitch\r\n                </label>\r\n\r\n                <MDEditor\r\n                    value={pitch}\r\n                    onChange={(value)=>setPitch(value as string)}\r\n                    id=\"pitch\"\r\n                    preview=\"edit\"\r\n                    height={300}\r\n                    style={{overflow: 'hidden',borderRadius:''}}\r\n                    textareaProps={{\r\n                        placeholder:'Write a pitch for your startup',\r\n\r\n                    }}\r\n                    previewOptions={{\r\n                        disallowedElements:['styles'],\r\n                    }}\r\n\r\n\r\n                />\r\n\r\n                {error.pitch && <p className=\"startup-form_error\">{error.pitch}</p>}\r\n            </div>\r\n             <Button type=\"submit\" className=\"startup-form_btn text-white\"  disabled={isPending}>\r\n                 {isPending ? 'Loading...' : 'Submit'}\r\n                 <Send className=\"ml-2 size-6\"/>\r\n             </Button>\r\n        </form>\r\n    )\r\n}\r\nexport default StartupForm\r\n"
+                },
+                "codebaseEnabled": true
+            },
+            "createdAt": 1744269110319,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "i cant submit the startup maybe theres some issue check it out"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "3e807ca3-1458-40e0-ad61-67045c286dd8",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": ""
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01YAbuazVCP8cUP8G3kZXAjf",
+                    "title": "",
+                    "statusText": "Failed",
+                    "status": "ERROR",
+                    "isHidden": false
+                }
+            ],
+            "context": {
+                "author": "Coding Agent",
+                "operationId": "33aeef00-8620-42f2-ac8e-c3ef01a54992"
+            },
+            "createdAt": 1744269114819,
+            "isInternal": false
+        },
+        {
+            "id": "8e2c0494-a241-41e4-927d-78bdfcbd3ce2",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": ""
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01YAbuazVCP8cUP8G3kZXAjf",
+                    "title": "",
+                    "statusText": "Failed",
+                    "status": "ERROR",
+                    "isHidden": false
+                }
+            ],
+            "context": {
+                "author": "Coding Agent",
+                "operationId": "4a38e791-d54e-48c3-ad00-969c7bff2d75"
+            },
+            "createdAt": 1744269132005,
+            "isInternal": false
+        },
+        {
+            "id": "e7dc133c-5e70-4f96-a5ac-8600322d1e0d",
+            "role": "system",
+            "content": [
+                {
+                    "type": "errorText",
+                    "text": "Internal server error. Please try again later.\nOperation ID: 4a38e791-d54e-48c3-ad00-969c7bff2d75\nUser ID: 78c55999-e132-48bb-8ba9-ca4b80a9c852",
+                    "allowRegenerate": true
+                }
+            ],
+            "createdAt": 1744269133235,
+            "isInternal": false
+        }
+    ],
+    "isAgent": true,
+    "isCustomAgent": false,
+    "isUnitTestsAgent": false,
+    "autoApply": false
+}
+}

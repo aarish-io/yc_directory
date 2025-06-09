@@ -1,0 +1,2046 @@
+{
+    "checksum": "42ec92481a6e37593fc7e91ca609339fca6a5d68de4508885f886d2a16e5a9cb",
+    "data": {
+    "id": "69fa20ce-bc95-4f95-ae31-e72344f7f28f",
+    "createdAt": 1743955583390,
+    "updatedAt": 1743958622221,
+    "title": "Syntax Error Breakdown",
+    "messages": [
+        {
+            "id": "492d204e-108a-4690-b42a-d395c2de24d2",
+            "role": "user",
+            "content": [
+                {
+                    "type": "command",
+                    "commandName": "explain"
+                },
+                {
+                    "type": "codeSnippet",
+                    "text": "\n",
+                    "language": "typescript jsx"
+                },
+                {
+                    "type": "text",
+                    "text": "Missing }"
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\View.tsx",
+                    "fsPath": "C:/Users/Aarish/Desktop/yc_directory/components/View.tsx",
+                    "content": "import {Ping} from \"@/components/Ping\";\nimport {client} from \"@/sanity/lib/client\";\nimport {STARTUP_VIEW_BY_ID} from \"@/sanity/lib/queries\";\n\n\nconst View = async ({id}:{id:string}) => {\n\n    const {views:totalviews} = await client.withConfig({useCdn:false}).fetch(STARTUP_VIEW_BY_ID,{id});\n\n    {//todo : add views to the database   //todo : set view or views based on totalviews value}}\n\n\n\n    return (\n        <div className=\"view-container\">\n            <div className=\"-top-2 absolute -right-2\">\n                <Ping/>\n            </div>\n\n            <p className=\"view-text\">\n                <span className=\"font-black\">\n\n                       {totalviews} Views\n                </span>\n            </p>\n        </div>\n    )\n}\nexport default View\n"
+                },
+                "codebaseEnabled": true,
+                "ragFiles": [
+                    {
+                        "path": "sanity/schemaTypes/startup.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\startup.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/sanity/schemaTypes/startup.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\sanity\\schemaTypes\\startup.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/app/global-error.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\app\\global-error.tsx",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/components/StartupForm.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\components\\StartupForm.tsx",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/lib/actions.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\lib\\actions.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "eslint.config.mjs",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\eslint.config.mjs",
+                        "sources": []
+                    },
+                    {
+                        "path": "next.config.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\next.config.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "app\\layout.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\layout.tsx",
+                        "sources": []
+                    },
+                    {
+                        "path": "postcss.config.mjs",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\postcss.config.mjs",
+                        "sources": []
+                    },
+                    {
+                        "path": "app\\(root)\\layout.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\(root)\\layout.tsx",
+                        "sources": []
+                    },
+                    {
+                        "path": "package.json",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\package.json",
+                        "sources": []
+                    },
+                    {
+                        "path": "README.md",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\README.md",
+                        "sources": []
+                    },
+                    {
+                        "path": "components.json",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components.json",
+                        "sources": []
+                    },
+                    {
+                        "path": "tsconfig.json",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\tsconfig.json",
+                        "sources": []
+                    },
+                    {
+                        "path": ".gitignore",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\.gitignore",
+                        "sources": []
+                    },
+                    {
+                        "path": "components/StartupCard.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\StartupCard.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "sanity/lib/queries.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\queries.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "components/Navbar.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\Navbar.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "app/(root)/startups/[id]/page.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\(root)\\startups\\[id]\\page.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "sanity/schemaTypes/startup.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\startup.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "app/globals.css",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\globals.css",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "components/View.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\View.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "components/Ping.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\Ping.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    }
+                ],
+                "rerankedFiles": [],
+                "usedFilePaths": [
+                    {
+                        "path": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\View.tsx",
+                        "fsPath": "C:/Users/Aarish/Desktop/yc_directory/components/View.tsx",
+                        "content": "import {Ping} from \"@/components/Ping\";\nimport {client} from \"@/sanity/lib/client\";\nimport {STARTUP_VIEW_BY_ID} from \"@/sanity/lib/queries\";\n\n\nconst View = async ({id}:{id:string}) => {\n\n    const {views:totalviews} = await client.withConfig({useCdn:false}).fetch(STARTUP_VIEW_BY_ID,{id});\n\n    {//todo : add views to the database   //todo : set view or views based on totalviews value}}\n\n\n\n    return (\n        <div className=\"view-container\">\n            <div className=\"-top-2 absolute -right-2\">\n                <Ping/>\n            </div>\n\n            <p className=\"view-text\">\n                <span className=\"font-black\">\n\n                       {totalviews} Views\n                </span>\n            </p>\n        </div>\n    )\n}\nexport default View\n"
+                    }
+                ]
+            },
+            "createdAt": 1743955583391,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "command",
+                                "attrs": {
+                                    "label": "explain"
+                                },
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": "/explain"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "codeBlock",
+                                "attrs": {
+                                    "language": "typescript jsx"
+                                },
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": "\n"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "text",
+                                "text": "Missing }"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "83df0c0e-a385-4713-a633-f82bef91d9f2",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "The terminal message \"Missing }\" indicates a syntax error in your TypeScript JSX code. This error typically means that there is an unmatched or missing closing curly brace (`}`) in your code. Let's break down the provided code snippet to identify and resolve the issue:\n\n### Code Analysis\n\n1. **Imports:**\n   - The code imports `Ping` from a components directory and `client` and `STARTUP_VIEW_BY_ID` from a sanity library. These imports seem correct and are not related to the error.\n\n2. **Function Definition:**\n   - The `View` component is defined as an asynchronous function that takes an object with an `id` property of type `string`.\n\n3. **Data Fetching:**\n   - Inside the function, `totalviews` is fetched using the `client` with a specific configuration. This part of the code is correctly structured.\n\n4. **Block with Comments:**\n   - The problematic part is the block with comments:\n     ```typescript\n     {//todo : add views to the database   //todo : set view or views based on totalviews value}}\n     ```\n   - Here, there is an extra closing curly brace `}` at the end of the block. This is causing the \"Missing }\" error because the block is not properly closed.\n\n### Resolution\n\nTo fix the error, you need to remove the extra closing curly brace `}` at the end of the comment block. The corrected block should look like this:\n\n```typescript\n{\n    //todo : add views to the database\n    //todo : set view or views based on totalviews value\n}\n```\n\n### Insights\n\n- **System Behavior:** The error prevents the code from compiling or running, as the syntax is incorrect.\n- **Potential Issues:** If not resolved, the component will not render, and the application may crash or fail to start.\n- **Necessary Actions:** Remove the extra curly brace to ensure the code block is properly closed.\n\nBy addressing this syntax error, your code should compile and run as expected, allowing you to proceed with implementing the functionality described in the comments."
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\View.tsx",
+                    "fsPath": "C:/Users/Aarish/Desktop/yc_directory/components/View.tsx",
+                    "content": "import {Ping} from \"@/components/Ping\";\nimport {client} from \"@/sanity/lib/client\";\nimport {STARTUP_VIEW_BY_ID} from \"@/sanity/lib/queries\";\n\n\nconst View = async ({id}:{id:string}) => {\n\n    const {views:totalviews} = await client.withConfig({useCdn:false}).fetch(STARTUP_VIEW_BY_ID,{id});\n\n    {//todo : add views to the database   //todo : set view or views based on totalviews value}}\n\n\n\n    return (\n        <div className=\"view-container\">\n            <div className=\"-top-2 absolute -right-2\">\n                <Ping/>\n            </div>\n\n            <p className=\"view-text\">\n                <span className=\"font-black\">\n\n                       {totalviews} Views\n                </span>\n            </p>\n        </div>\n    )\n}\nexport default View\n"
+                },
+                "codebaseEnabled": true,
+                "ragFiles": [
+                    {
+                        "path": "sanity/schemaTypes/startup.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\startup.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/sanity/schemaTypes/startup.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\sanity\\schemaTypes\\startup.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/app/global-error.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\app\\global-error.tsx",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/components/StartupForm.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\components\\StartupForm.tsx",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/lib/actions.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\lib\\actions.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "eslint.config.mjs",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\eslint.config.mjs",
+                        "sources": []
+                    },
+                    {
+                        "path": "next.config.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\next.config.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "app\\layout.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\layout.tsx",
+                        "sources": []
+                    },
+                    {
+                        "path": "postcss.config.mjs",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\postcss.config.mjs",
+                        "sources": []
+                    },
+                    {
+                        "path": "app\\(root)\\layout.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\(root)\\layout.tsx",
+                        "sources": []
+                    },
+                    {
+                        "path": "package.json",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\package.json",
+                        "sources": []
+                    },
+                    {
+                        "path": "README.md",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\README.md",
+                        "sources": []
+                    },
+                    {
+                        "path": "components.json",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components.json",
+                        "sources": []
+                    },
+                    {
+                        "path": "tsconfig.json",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\tsconfig.json",
+                        "sources": []
+                    },
+                    {
+                        "path": ".gitignore",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\.gitignore",
+                        "sources": []
+                    },
+                    {
+                        "path": "components/StartupCard.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\StartupCard.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "sanity/lib/queries.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\queries.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "components/Navbar.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\Navbar.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "app/(root)/startups/[id]/page.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\(root)\\startups\\[id]\\page.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "sanity/schemaTypes/startup.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\startup.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "app/globals.css",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\globals.css",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "components/View.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\View.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "components/Ping.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\Ping.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    }
+                ],
+                "rerankedFiles": [],
+                "usedFilePaths": [
+                    {
+                        "path": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\View.tsx",
+                        "fsPath": "C:/Users/Aarish/Desktop/yc_directory/components/View.tsx",
+                        "content": "import {Ping} from \"@/components/Ping\";\nimport {client} from \"@/sanity/lib/client\";\nimport {STARTUP_VIEW_BY_ID} from \"@/sanity/lib/queries\";\n\n\nconst View = async ({id}:{id:string}) => {\n\n    const {views:totalviews} = await client.withConfig({useCdn:false}).fetch(STARTUP_VIEW_BY_ID,{id});\n\n    {//todo : add views to the database   //todo : set view or views based on totalviews value}}\n\n\n\n    return (\n        <div className=\"view-container\">\n            <div className=\"-top-2 absolute -right-2\">\n                <Ping/>\n            </div>\n\n            <p className=\"view-text\">\n                <span className=\"font-black\">\n\n                       {totalviews} Views\n                </span>\n            </p>\n        </div>\n    )\n}\nexport default View\n"
+                    }
+                ]
+            },
+            "createdAt": 1743955594909,
+            "isInternal": false
+        },
+        {
+            "id": "a8ff9a7c-db26-4334-b730-65c9884e7ad8",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "here what does config do and where other places i have used it in my code and how it is used generally and why we added taht .token after config"
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "sanity\\lib\\write-client.ts",
+                    "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\write-client.ts",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": ""
+                },
+                "codebaseEnabled": true,
+                "ragFiles": [
+                    {
+                        "path": "postcss.config.mjs",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\postcss.config.mjs",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "app/studio/[[...tool]]/page.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\studio\\[[...tool]]\\page.tsx",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/postcss.config.mjs",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\postcss.config.mjs",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/tailwind.config.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\tailwind.config.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/app/studio/[[...tool]]/page.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\app\\studio\\[[...tool]]\\page.tsx",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "sanity/env.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\env.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/sanity/env.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\sanity\\env.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/auth.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\auth.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/sanity/lib/write-client.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\sanity\\lib\\write-client.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "sanity/lib/write-client.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\write-client.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "app\\api\\auth\\[...nextauth]\\route.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\api\\auth\\[...nextauth]\\route.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "next.config.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\next.config.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "postcss.config.mjs",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\postcss.config.mjs",
+                        "sources": []
+                    },
+                    {
+                        "path": "auth.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\auth.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "sanity.cli.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity.cli.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "components.json",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components.json",
+                        "sources": []
+                    },
+                    {
+                        "path": "tsconfig.json",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\tsconfig.json",
+                        "sources": []
+                    },
+                    {
+                        "path": ".gitignore",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\.gitignore",
+                        "sources": []
+                    },
+                    {
+                        "path": "README.md",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\README.md",
+                        "sources": []
+                    },
+                    {
+                        "path": "app\\globals.css",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\globals.css",
+                        "sources": []
+                    },
+                    {
+                        "path": "sanity.config.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity.config.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "eslint.config.mjs",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\eslint.config.mjs",
+                        "sources": []
+                    },
+                    {
+                        "path": "sanity\\env.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\env.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "sanity/lib/queries.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\queries.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "app/(root)/startups/[id]/page.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\(root)\\startups\\[id]\\page.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "sanity/schemaTypes/startup.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\startup.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "app/globals.css",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\globals.css",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "components/View.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\View.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "components/Ping.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\Ping.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "sanity/lib/write-client.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\write-client.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "sanity/lib/client.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\client.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    }
+                ],
+                "rerankedFiles": [
+                    {
+                        "path": "sanity\\env.ts",
+                        "fsPath": "sanity\\env.ts"
+                    },
+                    {
+                        "path": "sanity\\lib\\write-client.ts",
+                        "fsPath": "sanity\\lib\\write-client.ts"
+                    },
+                    {
+                        "path": "sanity.config.ts",
+                        "fsPath": "sanity.config.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\sanity\\env.ts",
+                        "fsPath": "yc_directory-main\\sanity\\env.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\sanity\\lib\\write-client.ts",
+                        "fsPath": "yc_directory-main\\sanity\\lib\\write-client.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\tailwind.config.ts",
+                        "fsPath": "yc_directory-main\\tailwind.config.ts"
+                    }
+                ],
+                "usedFilePaths": [
+                    {
+                        "path": "sanity\\lib\\write-client.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\write-client.ts",
+                        "sources": [
+                            "opened_tab"
+                        ],
+                        "content": ""
+                    },
+                    {
+                        "path": "sanity\\env.ts",
+                        "fsPath": "sanity\\env.ts"
+                    },
+                    {
+                        "path": "sanity.config.ts",
+                        "fsPath": "sanity.config.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\sanity\\env.ts",
+                        "fsPath": "yc_directory-main\\sanity\\env.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\sanity\\lib\\write-client.ts",
+                        "fsPath": "yc_directory-main\\sanity\\lib\\write-client.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\tailwind.config.ts",
+                        "fsPath": "yc_directory-main\\tailwind.config.ts"
+                    }
+                ]
+            },
+            "createdAt": 1743957711915,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "here what does config do and where other places i have used it in my code and how it is used generally and why we added taht .token after config "
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "65c4c8c6-4618-43b6-bfd7-efe59a06777d",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "In your TypeScript code, the `config` method is used to access the configuration settings of the `writeClient` object, which is an instance of a client created using the `next-sanity` library. Let's break down its usage and the context in which it appears:\n\n### What `config` Does\n\n1. **Purpose:** The `config` method is used to retrieve the configuration object of the `writeClient`. This object contains various settings that were used to initialize the client, such as `projectId`, `dataset`, `apiVersion`, `useCdn`, and `token`.\n\n2. **Usage in Code:**\n   ```typescript\n   if (!writeClient.config().token) {\n       throw new Error('Sanity client is missing a token');\n   }\n   ```\n   - Here, `writeClient.config().token` accesses the `token` property from the client's configuration. This is used to check if a token is present. If the token is missing, an error is thrown, indicating that the client cannot perform write operations without it.\n\n### Where `config` is Used\n\n- In the provided code snippet, `config` is used in the `write-client.ts` file to ensure that the `writeClient` has a valid token. This is crucial for authentication when performing write operations to the Sanity backend.\n\n### General Usage of `config`\n\n- **Configuration Retrieval:** The `config` method is generally used to access the configuration settings of a client or service. This can include API keys, tokens, project IDs, and other necessary parameters for connecting to external services.\n- **Validation:** It is often used to validate that all required configuration parameters are present and correctly set before proceeding with operations that depend on them.\n\n### Why `.token` is Added After `config`\n\n- **Accessing Specific Configuration:** By appending `.token` to `config()`, you are specifically accessing the `token` property within the configuration object. This is necessary to verify that the client has the required authentication token to interact with the Sanity API.\n\n### Insights\n\n- **System Behavior:** The check for the token ensures that the client is properly authenticated before attempting any operations that require write access.\n- **Potential Issues:** If the token is missing, the client will not be able to perform write operations, and an error will be thrown to alert the developer.\n- **Necessary Actions:** Ensure that the `SANITY_API_TOKEN` environment variable is set correctly in your environment to avoid this error.\n\nBy understanding the role of `config` and the importance of the token, you can ensure that your client is correctly configured and authenticated for interacting with the Sanity API."
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "sanity\\lib\\write-client.ts",
+                    "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\write-client.ts",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": ""
+                },
+                "codebaseEnabled": true,
+                "ragFiles": [
+                    {
+                        "path": "postcss.config.mjs",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\postcss.config.mjs",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "app/studio/[[...tool]]/page.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\studio\\[[...tool]]\\page.tsx",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/postcss.config.mjs",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\postcss.config.mjs",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/tailwind.config.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\tailwind.config.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/app/studio/[[...tool]]/page.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\app\\studio\\[[...tool]]\\page.tsx",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "sanity/env.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\env.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/sanity/env.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\sanity\\env.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/auth.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\auth.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/sanity/lib/write-client.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\sanity\\lib\\write-client.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "sanity/lib/write-client.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\write-client.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "app\\api\\auth\\[...nextauth]\\route.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\api\\auth\\[...nextauth]\\route.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "next.config.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\next.config.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "postcss.config.mjs",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\postcss.config.mjs",
+                        "sources": []
+                    },
+                    {
+                        "path": "auth.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\auth.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "sanity.cli.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity.cli.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "components.json",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components.json",
+                        "sources": []
+                    },
+                    {
+                        "path": "tsconfig.json",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\tsconfig.json",
+                        "sources": []
+                    },
+                    {
+                        "path": ".gitignore",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\.gitignore",
+                        "sources": []
+                    },
+                    {
+                        "path": "README.md",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\README.md",
+                        "sources": []
+                    },
+                    {
+                        "path": "app\\globals.css",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\globals.css",
+                        "sources": []
+                    },
+                    {
+                        "path": "sanity.config.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity.config.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "eslint.config.mjs",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\eslint.config.mjs",
+                        "sources": []
+                    },
+                    {
+                        "path": "sanity\\env.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\env.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "sanity/lib/queries.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\queries.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "app/(root)/startups/[id]/page.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\(root)\\startups\\[id]\\page.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "sanity/schemaTypes/startup.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\startup.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "app/globals.css",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\globals.css",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "components/View.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\View.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "components/Ping.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\Ping.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "sanity/lib/write-client.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\write-client.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "sanity/lib/client.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\client.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    }
+                ],
+                "rerankedFiles": [
+                    {
+                        "path": "sanity\\env.ts",
+                        "fsPath": "sanity\\env.ts"
+                    },
+                    {
+                        "path": "sanity\\lib\\write-client.ts",
+                        "fsPath": "sanity\\lib\\write-client.ts"
+                    },
+                    {
+                        "path": "sanity.config.ts",
+                        "fsPath": "sanity.config.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\sanity\\env.ts",
+                        "fsPath": "yc_directory-main\\sanity\\env.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\sanity\\lib\\write-client.ts",
+                        "fsPath": "yc_directory-main\\sanity\\lib\\write-client.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\tailwind.config.ts",
+                        "fsPath": "yc_directory-main\\tailwind.config.ts"
+                    }
+                ],
+                "usedFilePaths": [
+                    {
+                        "path": "sanity\\lib\\write-client.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\write-client.ts",
+                        "sources": [
+                            "opened_tab"
+                        ],
+                        "content": ""
+                    },
+                    {
+                        "path": "sanity\\env.ts",
+                        "fsPath": "sanity\\env.ts"
+                    },
+                    {
+                        "path": "sanity.config.ts",
+                        "fsPath": "sanity.config.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\sanity\\env.ts",
+                        "fsPath": "yc_directory-main\\sanity\\env.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\sanity\\lib\\write-client.ts",
+                        "fsPath": "yc_directory-main\\sanity\\lib\\write-client.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\tailwind.config.ts",
+                        "fsPath": "yc_directory-main\\tailwind.config.ts"
+                    }
+                ]
+            },
+            "createdAt": 1743957725732,
+            "isInternal": false
+        },
+        {
+            "id": "dbfd34dd-dd97-4f5a-85a7-73f7ac62f19b",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "why this error is happening"
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "sanity\\env.ts",
+                    "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\env.ts",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "export const apiVersion =\n  process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2025-04-03'\n\nexport const dataset = assertValue(\n  process.env.NEXT_PUBLIC_SANITY_DATASET,\n  'Missing environment variable: NEXT_PUBLIC_SANITY_DATASET'\n)\n\nexport const projectId = assertValue(\n  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,\n  'Missing environment variable: NEXT_PUBLIC_SANITY_PROJECT_ID'\n)\nexport const token = assertValue(process.env.SANITY_API_TOKEN,\n    'Missing environment variable: SANITY_API_TOKEN')\n\nfunction assertValue<T>(v: T | undefined, errorMessage: string): T {\n  if (v === undefined) {\n    throw new Error(errorMessage)\n  }\n\n  return v\n}\n"
+                },
+                "codebaseEnabled": true,
+                "ragFiles": [
+                    {
+                        "path": "sanity/schemaTypes/startup.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\startup.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/sanity/schemaTypes/startup.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\sanity\\schemaTypes\\startup.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/app/global-error.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\app\\global-error.tsx",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/components/StartupForm.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\components\\StartupForm.tsx",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/lib/actions.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\lib\\actions.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "app\\(root)\\page.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\(root)\\page.tsx",
+                        "sources": []
+                    },
+                    {
+                        "path": "lib\\utils.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\lib\\utils.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "sanity\\schemaTypes\\startup.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\startup.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "sanity\\schemaTypes\\index.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\index.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "next.config.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\next.config.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "package.json",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\package.json",
+                        "sources": []
+                    },
+                    {
+                        "path": "README.md",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\README.md",
+                        "sources": []
+                    },
+                    {
+                        "path": "app\\globals.css",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\globals.css",
+                        "sources": []
+                    },
+                    {
+                        "path": "tsconfig.json",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\tsconfig.json",
+                        "sources": []
+                    },
+                    {
+                        "path": "sanity/lib/queries.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\queries.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "app/(root)/startups/[id]/page.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\(root)\\startups\\[id]\\page.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "sanity/schemaTypes/startup.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\startup.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "app/globals.css",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\globals.css",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "components/View.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\View.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "components/Ping.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\Ping.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "sanity/lib/write-client.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\write-client.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "sanity/lib/client.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\client.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "sanity/env.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\env.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": ".env.local",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\.env.local",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    }
+                ],
+                "rerankedFiles": [
+                    {
+                        "path": "app\\(root)\\startups\\[id]\\page.tsx",
+                        "fsPath": "app\\(root)\\startups\\[id]\\page.tsx"
+                    },
+                    {
+                        "path": "components\\Navbar.tsx",
+                        "fsPath": "components\\Navbar.tsx"
+                    },
+                    {
+                        "path": "sanity\\lib\\write-client.ts",
+                        "fsPath": "sanity\\lib\\write-client.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\app\\global-error.tsx",
+                        "fsPath": "yc_directory-main\\app\\global-error.tsx"
+                    },
+                    {
+                        "path": "yc_directory-main\\auth.ts",
+                        "fsPath": "yc_directory-main\\auth.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\components\\StartupForm.tsx",
+                        "fsPath": "yc_directory-main\\components\\StartupForm.tsx"
+                    },
+                    {
+                        "path": "yc_directory-main\\lib\\actions.ts",
+                        "fsPath": "yc_directory-main\\lib\\actions.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\sanity\\lib\\write-client.ts",
+                        "fsPath": "yc_directory-main\\sanity\\lib\\write-client.ts"
+                    }
+                ],
+                "usedFilePaths": [
+                    {
+                        "path": "sanity\\env.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\env.ts",
+                        "sources": [
+                            "opened_tab"
+                        ],
+                        "content": "export const apiVersion =\n  process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2025-04-03'\n\nexport const dataset = assertValue(\n  process.env.NEXT_PUBLIC_SANITY_DATASET,\n  'Missing environment variable: NEXT_PUBLIC_SANITY_DATASET'\n)\n\nexport const projectId = assertValue(\n  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,\n  'Missing environment variable: NEXT_PUBLIC_SANITY_PROJECT_ID'\n)\nexport const token = assertValue(process.env.SANITY_API_TOKEN,\n    'Missing environment variable: SANITY_API_TOKEN')\n\nfunction assertValue<T>(v: T | undefined, errorMessage: string): T {\n  if (v === undefined) {\n    throw new Error(errorMessage)\n  }\n\n  return v\n}\n"
+                    },
+                    {
+                        "path": "app\\(root)\\startups\\[id]\\page.tsx",
+                        "fsPath": "app\\(root)\\startups\\[id]\\page.tsx"
+                    },
+                    {
+                        "path": "components\\Navbar.tsx",
+                        "fsPath": "components\\Navbar.tsx"
+                    },
+                    {
+                        "path": "sanity\\lib\\write-client.ts",
+                        "fsPath": "sanity\\lib\\write-client.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\app\\global-error.tsx",
+                        "fsPath": "yc_directory-main\\app\\global-error.tsx"
+                    },
+                    {
+                        "path": "yc_directory-main\\auth.ts",
+                        "fsPath": "yc_directory-main\\auth.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\components\\StartupForm.tsx",
+                        "fsPath": "yc_directory-main\\components\\StartupForm.tsx"
+                    },
+                    {
+                        "path": "yc_directory-main\\lib\\actions.ts",
+                        "fsPath": "yc_directory-main\\lib\\actions.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\sanity\\lib\\write-client.ts",
+                        "fsPath": "yc_directory-main\\sanity\\lib\\write-client.ts"
+                    }
+                ]
+            },
+            "createdAt": 1743958417487,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "why this error is happening "
+                            }
+                        ]
+                    },
+                    {
+                        "type": "paragraph"
+                    }
+                ]
+            }
+        },
+        {
+            "id": "12436057-d951-4395-a3f9-43dd055f756d",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "The error you're encountering is likely related to the environment variable `SANITY_API_TOKEN` not being set correctly. Let's break down the relevant parts of your code and explain why this error might be occurring:\n\n### Code Analysis\n\n1. **Environment Variables in `env.ts`:**\n   ```typescript\n   export const token = assertValue(process.env.SANITY_API_TOKEN, 'Missing environment variable: SANITY_API_TOKEN');\n   ```\n\n   - The `token` is being set using the `assertValue` function, which checks if the `SANITY_API_TOKEN` environment variable is defined. If it is not, an error is thrown with the message \"Missing environment variable: SANITY_API_TOKEN\".\n\n2. **`assertValue` Function:**\n   ```typescript\n   function assertValue<T>(v: T | undefined, errorMessage: string): T {\n     if (v === undefined) {\n       throw new Error(errorMessage);\n     }\n     return v;\n   }\n   ```\n\n   - This function ensures that a value is provided. If the value is `undefined`, it throws an error with the specified error message.\n\n3. **Usage in `write-client.ts`:**\n   ```typescript\n   if (!writeClient.config().token) {\n       throw new Error('Sanity client is missing a token');\n   }\n   ```\n\n   - This line checks if the `token` is present in the `writeClient` configuration. If not, it throws an error indicating that the Sanity client is missing a token.\n\n### Why the Error is Happening\n\n- **Missing Environment Variable:** The error \"Missing environment variable: SANITY_API_TOKEN\" suggests that the `SANITY_API_TOKEN` environment variable is not set in your environment. This variable is crucial for authenticating write operations to the Sanity backend.\n\n### How to Resolve the Error\n\n1. **Set the Environment Variable:**\n   - Ensure that the `SANITY_API_TOKEN` is set in your environment. You can do this by adding it to your `.env` file or setting it directly in your environment configuration.\n\n   Example `.env` file:\n   ```\n   SANITY_API_TOKEN=your_sanity_api_token_here\n   ```\n\n2. **Verify Environment Configuration:**\n   - Make sure your environment variables are being loaded correctly. If you're using a framework like Next.js, ensure that the `.env` file is in the root directory and that the environment variables are prefixed with `NEXT_PUBLIC_` if they need to be exposed to the client-side code.\n\n3. **Restart Your Development Server:**\n   - After setting the environment variable, restart your development server to ensure the changes take effect.\n\nBy ensuring that the `SANITY_API_TOKEN` is correctly set and accessible in your environment, you should be able to resolve this error and allow your application to authenticate with the Sanity API successfully."
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "sanity\\env.ts",
+                    "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\env.ts",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "export const apiVersion =\n  process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2025-04-03'\n\nexport const dataset = assertValue(\n  process.env.NEXT_PUBLIC_SANITY_DATASET,\n  'Missing environment variable: NEXT_PUBLIC_SANITY_DATASET'\n)\n\nexport const projectId = assertValue(\n  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,\n  'Missing environment variable: NEXT_PUBLIC_SANITY_PROJECT_ID'\n)\nexport const token = assertValue(process.env.SANITY_API_TOKEN,\n    'Missing environment variable: SANITY_API_TOKEN')\n\nfunction assertValue<T>(v: T | undefined, errorMessage: string): T {\n  if (v === undefined) {\n    throw new Error(errorMessage)\n  }\n\n  return v\n}\n"
+                },
+                "codebaseEnabled": true,
+                "ragFiles": [
+                    {
+                        "path": "sanity/schemaTypes/startup.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\startup.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/sanity/schemaTypes/startup.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\sanity\\schemaTypes\\startup.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/app/global-error.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\app\\global-error.tsx",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/components/StartupForm.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\components\\StartupForm.tsx",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/lib/actions.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\lib\\actions.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "app\\(root)\\page.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\(root)\\page.tsx",
+                        "sources": []
+                    },
+                    {
+                        "path": "lib\\utils.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\lib\\utils.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "sanity\\schemaTypes\\startup.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\startup.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "sanity\\schemaTypes\\index.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\index.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "next.config.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\next.config.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "package.json",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\package.json",
+                        "sources": []
+                    },
+                    {
+                        "path": "README.md",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\README.md",
+                        "sources": []
+                    },
+                    {
+                        "path": "app\\globals.css",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\globals.css",
+                        "sources": []
+                    },
+                    {
+                        "path": "tsconfig.json",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\tsconfig.json",
+                        "sources": []
+                    },
+                    {
+                        "path": "sanity/lib/queries.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\queries.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "app/(root)/startups/[id]/page.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\(root)\\startups\\[id]\\page.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "sanity/schemaTypes/startup.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\startup.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "app/globals.css",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\globals.css",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "components/View.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\View.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "components/Ping.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\Ping.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "sanity/lib/write-client.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\write-client.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "sanity/lib/client.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\client.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "sanity/env.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\env.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": ".env.local",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\.env.local",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    }
+                ],
+                "rerankedFiles": [
+                    {
+                        "path": "app\\(root)\\startups\\[id]\\page.tsx",
+                        "fsPath": "app\\(root)\\startups\\[id]\\page.tsx"
+                    },
+                    {
+                        "path": "components\\Navbar.tsx",
+                        "fsPath": "components\\Navbar.tsx"
+                    },
+                    {
+                        "path": "sanity\\lib\\write-client.ts",
+                        "fsPath": "sanity\\lib\\write-client.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\app\\global-error.tsx",
+                        "fsPath": "yc_directory-main\\app\\global-error.tsx"
+                    },
+                    {
+                        "path": "yc_directory-main\\auth.ts",
+                        "fsPath": "yc_directory-main\\auth.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\components\\StartupForm.tsx",
+                        "fsPath": "yc_directory-main\\components\\StartupForm.tsx"
+                    },
+                    {
+                        "path": "yc_directory-main\\lib\\actions.ts",
+                        "fsPath": "yc_directory-main\\lib\\actions.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\sanity\\lib\\write-client.ts",
+                        "fsPath": "yc_directory-main\\sanity\\lib\\write-client.ts"
+                    }
+                ],
+                "usedFilePaths": [
+                    {
+                        "path": "sanity\\env.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\env.ts",
+                        "sources": [
+                            "opened_tab"
+                        ],
+                        "content": "export const apiVersion =\n  process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2025-04-03'\n\nexport const dataset = assertValue(\n  process.env.NEXT_PUBLIC_SANITY_DATASET,\n  'Missing environment variable: NEXT_PUBLIC_SANITY_DATASET'\n)\n\nexport const projectId = assertValue(\n  process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,\n  'Missing environment variable: NEXT_PUBLIC_SANITY_PROJECT_ID'\n)\nexport const token = assertValue(process.env.SANITY_API_TOKEN,\n    'Missing environment variable: SANITY_API_TOKEN')\n\nfunction assertValue<T>(v: T | undefined, errorMessage: string): T {\n  if (v === undefined) {\n    throw new Error(errorMessage)\n  }\n\n  return v\n}\n"
+                    },
+                    {
+                        "path": "app\\(root)\\startups\\[id]\\page.tsx",
+                        "fsPath": "app\\(root)\\startups\\[id]\\page.tsx"
+                    },
+                    {
+                        "path": "components\\Navbar.tsx",
+                        "fsPath": "components\\Navbar.tsx"
+                    },
+                    {
+                        "path": "sanity\\lib\\write-client.ts",
+                        "fsPath": "sanity\\lib\\write-client.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\app\\global-error.tsx",
+                        "fsPath": "yc_directory-main\\app\\global-error.tsx"
+                    },
+                    {
+                        "path": "yc_directory-main\\auth.ts",
+                        "fsPath": "yc_directory-main\\auth.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\components\\StartupForm.tsx",
+                        "fsPath": "yc_directory-main\\components\\StartupForm.tsx"
+                    },
+                    {
+                        "path": "yc_directory-main\\lib\\actions.ts",
+                        "fsPath": "yc_directory-main\\lib\\actions.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\sanity\\lib\\write-client.ts",
+                        "fsPath": "yc_directory-main\\sanity\\lib\\write-client.ts"
+                    }
+                ]
+            },
+            "createdAt": 1743958429299,
+            "isInternal": false
+        },
+        {
+            "id": "1a99c080-f34d-414e-b50e-c42555b97044",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "sanity token is declared by me but im still facing the issue"
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": ".env.local",
+                    "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\.env.local",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "AUTH_SECRET=\"EDg4j5Uu/nfwdFdi6nN2ofLlW8UlRmXasizEID3LCz8=\" # Added by `npx auth`. Read more: https://cli.authjs.dev\nAUTH_GITHUB_ID=\"Ov23liVecYYrNVEgFOYS\"\nAUTH_GITHUB_SECRET=\"bfdcc0149efc5d039c46f81dbadee0bf596bdd9e\"\nNEXT_PUBLIC_SANITY_PROJECT_ID=\"r34c8di2\"\nNEXT_PUBLIC_SANITY_DATASET=\"production\"\nNEXT_PUBLIC_SANITY_API_VERSION = \"vX\"\nSANITY_API_TOKEN = \"skB6251HFW9k8oZvNRjEtq2ZZskxCKZJCWvKUuoptII1YgyRdRcqzFBhcK0SZtquM3vLEBT0HtOI0S6FtTgIvHTYR7YvNOfHMLughtk0fRTbbsdK09iKn3hh3ngt9NKBy2Zp901mjqjtuaY7a8zLYN2GZOFv3YTvOcCggmSybJAICoHQnIBq\""
+                },
+                "codebaseEnabled": true,
+                "ragFiles": [
+                    {
+                        "path": "sanity/env.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\env.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/sanity/env.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\sanity\\env.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/sanity/lib/write-client.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\sanity\\lib\\write-client.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "sanity/lib/write-client.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\write-client.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/auth.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\auth.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "sanity/schemaTypes/startup.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\startup.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/sanity/schemaTypes/startup.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\sanity\\schemaTypes\\startup.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/app/global-error.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\app\\global-error.tsx",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/components/StartupForm.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\components\\StartupForm.tsx",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/lib/actions.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\lib\\actions.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "sanity\\env.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\env.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "sanity\\schemaTypes\\index.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\index.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "sanity.cli.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity.cli.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "sanity\\lib\\live.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\live.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "sanity\\lib\\client.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\client.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "package.json",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\package.json",
+                        "sources": []
+                    },
+                    {
+                        "path": "tsconfig.json",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\tsconfig.json",
+                        "sources": []
+                    },
+                    {
+                        "path": "app\\globals.css",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\globals.css",
+                        "sources": []
+                    },
+                    {
+                        "path": "components.json",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components.json",
+                        "sources": []
+                    },
+                    {
+                        "path": "README.md",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\README.md",
+                        "sources": []
+                    },
+                    {
+                        "path": "sanity.config.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity.config.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "sanity/lib/queries.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\queries.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "app/(root)/startups/[id]/page.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\(root)\\startups\\[id]\\page.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "sanity/schemaTypes/startup.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\startup.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "app/globals.css",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\globals.css",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "components/View.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\View.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "components/Ping.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\Ping.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "sanity/lib/write-client.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\write-client.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "sanity/lib/client.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\client.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "sanity/env.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\env.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": ".env.local",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\.env.local",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    }
+                ],
+                "rerankedFiles": [
+                    {
+                        "path": ".env.local",
+                        "fsPath": ".env.local"
+                    },
+                    {
+                        "path": "sanity\\env.ts",
+                        "fsPath": "sanity\\env.ts"
+                    },
+                    {
+                        "path": "sanity\\lib\\write-client.ts",
+                        "fsPath": "sanity\\lib\\write-client.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\auth.ts",
+                        "fsPath": "yc_directory-main\\auth.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\sanity\\env.ts",
+                        "fsPath": "yc_directory-main\\sanity\\env.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\sanity\\lib\\write-client.ts",
+                        "fsPath": "yc_directory-main\\sanity\\lib\\write-client.ts"
+                    }
+                ],
+                "usedFilePaths": [
+                    {
+                        "path": ".env.local",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\.env.local",
+                        "sources": [
+                            "opened_tab"
+                        ],
+                        "content": "AUTH_SECRET=\"EDg4j5Uu/nfwdFdi6nN2ofLlW8UlRmXasizEID3LCz8=\" # Added by `npx auth`. Read more: https://cli.authjs.dev\nAUTH_GITHUB_ID=\"Ov23liVecYYrNVEgFOYS\"\nAUTH_GITHUB_SECRET=\"bfdcc0149efc5d039c46f81dbadee0bf596bdd9e\"\nNEXT_PUBLIC_SANITY_PROJECT_ID=\"r34c8di2\"\nNEXT_PUBLIC_SANITY_DATASET=\"production\"\nNEXT_PUBLIC_SANITY_API_VERSION = \"vX\"\nSANITY_API_TOKEN = \"skB6251HFW9k8oZvNRjEtq2ZZskxCKZJCWvKUuoptII1YgyRdRcqzFBhcK0SZtquM3vLEBT0HtOI0S6FtTgIvHTYR7YvNOfHMLughtk0fRTbbsdK09iKn3hh3ngt9NKBy2Zp901mjqjtuaY7a8zLYN2GZOFv3YTvOcCggmSybJAICoHQnIBq\""
+                    },
+                    {
+                        "path": "sanity\\env.ts",
+                        "fsPath": "sanity\\env.ts"
+                    },
+                    {
+                        "path": "sanity\\lib\\write-client.ts",
+                        "fsPath": "sanity\\lib\\write-client.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\auth.ts",
+                        "fsPath": "yc_directory-main\\auth.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\sanity\\env.ts",
+                        "fsPath": "yc_directory-main\\sanity\\env.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\sanity\\lib\\write-client.ts",
+                        "fsPath": "yc_directory-main\\sanity\\lib\\write-client.ts"
+                    }
+                ]
+            },
+            "createdAt": 1743958608007,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "sanity token is declared by me but im still facing the issue "
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "0bb18688-50e6-4bda-8e56-6d2123bbf513",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Given the information you've provided, it seems like the error is related to the `SANITY_API_TOKEN` not being recognized or accessed correctly in your environment, despite being declared in your `.env.local` file. Here are some potential reasons and solutions for this issue:\n\n### Potential Issues and Solutions\n\n1. **Environment Variable Loading:**\n   - **Issue:** The environment variables might not be loading correctly into your application.\n   - **Solution:** Ensure that your environment variables are being loaded properly. If you're using a framework like Next.js, make sure you have the `dotenv` package installed and configured to load `.env.local` files. Restart your development server after making changes to the `.env.local` file.\n\n2. **Variable Naming Consistency:**\n   - **Issue:** There might be a mismatch in the variable name used in your code and the one declared in the `.env.local` file.\n   - **Solution:** Double-check that the variable name `SANITY_API_TOKEN` is used consistently throughout your code. In your `env.ts` file, ensure that `process.env.SANITY_API_TOKEN` is being accessed correctly.\n\n3. **File Location and Naming:**\n   - **Issue:** The `.env.local` file might not be in the correct location or might be named incorrectly.\n   - **Solution:** Ensure that the `.env.local` file is located in the root directory of your project. The file should be named exactly `.env.local` without any additional extensions or typos.\n\n4. **Environment Configuration:**\n   - **Issue:** The environment might not be configured to recognize `.env.local` files.\n   - **Solution:** Verify that your development environment is set up to recognize and load environment variables from `.env.local`. This might involve configuring your build or start scripts to include environment variable loading.\n\n5. **Token Access in Code:**\n   - **Issue:** The token might not be accessed correctly in your code.\n   - **Solution:** In your `write-client.ts` file, ensure that the `token` is being imported and used correctly. The line `import { apiVersion, dataset, projectId, token } from '../env'` should correctly import the `token` from your `env.ts` file.\n\n### Additional Steps\n\n- **Logging for Debugging:** Add console logs in your `env.ts` file to check if the `token` is being set correctly. For example:\n  ```typescript\n  console.log('Sanity API Token:', process.env.SANITY_API_TOKEN);\n  ```\n\n- **Check for Typos:** Ensure there are no typos in the environment variable names in both your `.env.local` file and your code.\n\nBy following these steps, you should be able to identify and resolve the issue with the `SANITY_API_TOKEN` not being recognized in your application. If the problem persists, consider checking the documentation for your specific framework or environment setup for additional guidance on handling environment variables."
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": ".env.local",
+                    "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\.env.local",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "AUTH_SECRET=\"EDg4j5Uu/nfwdFdi6nN2ofLlW8UlRmXasizEID3LCz8=\" # Added by `npx auth`. Read more: https://cli.authjs.dev\nAUTH_GITHUB_ID=\"Ov23liVecYYrNVEgFOYS\"\nAUTH_GITHUB_SECRET=\"bfdcc0149efc5d039c46f81dbadee0bf596bdd9e\"\nNEXT_PUBLIC_SANITY_PROJECT_ID=\"r34c8di2\"\nNEXT_PUBLIC_SANITY_DATASET=\"production\"\nNEXT_PUBLIC_SANITY_API_VERSION = \"vX\"\nSANITY_API_TOKEN = \"skB6251HFW9k8oZvNRjEtq2ZZskxCKZJCWvKUuoptII1YgyRdRcqzFBhcK0SZtquM3vLEBT0HtOI0S6FtTgIvHTYR7YvNOfHMLughtk0fRTbbsdK09iKn3hh3ngt9NKBy2Zp901mjqjtuaY7a8zLYN2GZOFv3YTvOcCggmSybJAICoHQnIBq\""
+                },
+                "codebaseEnabled": true,
+                "ragFiles": [
+                    {
+                        "path": "sanity/env.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\env.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/sanity/env.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\sanity\\env.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/sanity/lib/write-client.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\sanity\\lib\\write-client.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "sanity/lib/write-client.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\write-client.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/auth.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\auth.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "sanity/schemaTypes/startup.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\startup.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/sanity/schemaTypes/startup.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\sanity\\schemaTypes\\startup.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/app/global-error.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\app\\global-error.tsx",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/components/StartupForm.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\components\\StartupForm.tsx",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "yc_directory-main/lib/actions.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\yc_directory-main\\lib\\actions.ts",
+                        "sources": [
+                            "keyword_search"
+                        ]
+                    },
+                    {
+                        "path": "sanity\\env.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\env.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "sanity\\schemaTypes\\index.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\index.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "sanity.cli.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity.cli.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "sanity\\lib\\live.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\live.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "sanity\\lib\\client.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\client.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "package.json",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\package.json",
+                        "sources": []
+                    },
+                    {
+                        "path": "tsconfig.json",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\tsconfig.json",
+                        "sources": []
+                    },
+                    {
+                        "path": "app\\globals.css",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\globals.css",
+                        "sources": []
+                    },
+                    {
+                        "path": "components.json",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components.json",
+                        "sources": []
+                    },
+                    {
+                        "path": "README.md",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\README.md",
+                        "sources": []
+                    },
+                    {
+                        "path": "sanity.config.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity.config.ts",
+                        "sources": []
+                    },
+                    {
+                        "path": "sanity/lib/queries.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\queries.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "app/(root)/startups/[id]/page.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\(root)\\startups\\[id]\\page.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "sanity/schemaTypes/startup.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\startup.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "app/globals.css",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\app\\globals.css",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "components/View.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\View.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "components/Ping.tsx",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\Ping.tsx",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "sanity/lib/write-client.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\write-client.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "sanity/lib/client.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\lib\\client.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": "sanity/env.ts",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\env.ts",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    },
+                    {
+                        "path": ".env.local",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\.env.local",
+                        "sources": [
+                            "opened_tab"
+                        ]
+                    }
+                ],
+                "rerankedFiles": [
+                    {
+                        "path": ".env.local",
+                        "fsPath": ".env.local"
+                    },
+                    {
+                        "path": "sanity\\env.ts",
+                        "fsPath": "sanity\\env.ts"
+                    },
+                    {
+                        "path": "sanity\\lib\\write-client.ts",
+                        "fsPath": "sanity\\lib\\write-client.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\auth.ts",
+                        "fsPath": "yc_directory-main\\auth.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\sanity\\env.ts",
+                        "fsPath": "yc_directory-main\\sanity\\env.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\sanity\\lib\\write-client.ts",
+                        "fsPath": "yc_directory-main\\sanity\\lib\\write-client.ts"
+                    }
+                ],
+                "usedFilePaths": [
+                    {
+                        "path": ".env.local",
+                        "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\.env.local",
+                        "sources": [
+                            "opened_tab"
+                        ],
+                        "content": "AUTH_SECRET=\"EDg4j5Uu/nfwdFdi6nN2ofLlW8UlRmXasizEID3LCz8=\" # Added by `npx auth`. Read more: https://cli.authjs.dev\nAUTH_GITHUB_ID=\"Ov23liVecYYrNVEgFOYS\"\nAUTH_GITHUB_SECRET=\"bfdcc0149efc5d039c46f81dbadee0bf596bdd9e\"\nNEXT_PUBLIC_SANITY_PROJECT_ID=\"r34c8di2\"\nNEXT_PUBLIC_SANITY_DATASET=\"production\"\nNEXT_PUBLIC_SANITY_API_VERSION = \"vX\"\nSANITY_API_TOKEN = \"skB6251HFW9k8oZvNRjEtq2ZZskxCKZJCWvKUuoptII1YgyRdRcqzFBhcK0SZtquM3vLEBT0HtOI0S6FtTgIvHTYR7YvNOfHMLughtk0fRTbbsdK09iKn3hh3ngt9NKBy2Zp901mjqjtuaY7a8zLYN2GZOFv3YTvOcCggmSybJAICoHQnIBq\""
+                    },
+                    {
+                        "path": "sanity\\env.ts",
+                        "fsPath": "sanity\\env.ts"
+                    },
+                    {
+                        "path": "sanity\\lib\\write-client.ts",
+                        "fsPath": "sanity\\lib\\write-client.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\auth.ts",
+                        "fsPath": "yc_directory-main\\auth.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\sanity\\env.ts",
+                        "fsPath": "yc_directory-main\\sanity\\env.ts"
+                    },
+                    {
+                        "path": "yc_directory-main\\sanity\\lib\\write-client.ts",
+                        "fsPath": "yc_directory-main\\sanity\\lib\\write-client.ts"
+                    }
+                ]
+            },
+            "createdAt": 1743958622221,
+            "isInternal": false
+        }
+    ],
+    "isAgent": false,
+    "isNameGenerated": true,
+    "isCustomAgent": false
+}
+}

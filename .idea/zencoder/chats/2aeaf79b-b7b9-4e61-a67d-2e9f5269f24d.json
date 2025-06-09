@@ -1,0 +1,573 @@
+{
+    "checksum": "f08acda1876cd6e8104e42d1a07a8e9334b5e1ef53a64ebae643d470d6a63952",
+    "data": {
+    "id": "2aeaf79b-b7b9-4e61-a67d-2e9f5269f24d",
+    "createdAt": 1743768408732,
+    "updatedAt": 1743768859760,
+    "title": "TypeScript Error Fixes and Optimization",
+    "messages": [
+        {
+            "id": "84ba3965-80f3-453b-be62-55ad4acfb4c9",
+            "role": "user",
+            "content": [
+                {
+                    "type": "command",
+                    "commandName": "fix"
+                },
+                {
+                    "type": "codeSnippet",
+                    "text": "[author,startup,]",
+                    "language": "typescript"
+                },
+                {
+                    "type": "text",
+                    "text": "TS2322: Type 'typeof startup' is not assignable to type 'SchemaTypeDefinition'."
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\index.ts",
+                    "fsPath": "C:/Users/Aarish/Desktop/yc_directory/sanity/schemaTypes/index.ts",
+                    "content": "import { type SchemaTypeDefinition } from 'sanity'\nimport {author} from \"@/sanity/schemaTypes/author\";\nimport {startup} from \"@/sanity/schemaTypes/startup\";\n\nexport const schema: { types: SchemaTypeDefinition[] } = {\n  types: [author,startup,],\n}\n"
+                },
+                "codebaseEnabled": true
+            },
+            "createdAt": 1743768408738,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "command",
+                                "attrs": {
+                                    "label": "fix"
+                                },
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": "/fix"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "codeBlock",
+                                "attrs": {
+                                    "language": "typescript"
+                                },
+                                "content": [
+                                    {
+                                        "type": "text",
+                                        "text": "[author,startup,]"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "text",
+                                "text": "TS2322: Type 'typeof startup' is not assignable to type 'SchemaTypeDefinition'."
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "5b2d5577-b921-4916-aef5-2cac2e3f66c2",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "I'll help you fix this TypeScript error. The error indicates that the `startup` type is not assignable to the `SchemaTypeDefinition` type that's expected in the schema array.\n\nLet's first check the `startup` schema file to understand its structure:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01RrHWdh4mENoTGcZjmFQG6z",
+                    "statusText": "Viewed file",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "sanity/schemaTypes/startup.ts",
+                                "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\startup.ts"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "Now let's also check the `author` schema file to compare:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01FEL1BU5igrKqn8nHU9antz",
+                    "statusText": "Viewed file",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "sanity/schemaTypes/author.ts",
+                                "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\author.ts"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "I found the issue! In the `startup.ts` file, you've named the exported constant as `author` instead of `startup`. This is causing a conflict and the TypeScript error.\n\nLet's fix the `startup.ts` file:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01T7C7DxtjdtZWSFeJxsXb7a",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "sanity/schemaTypes/startup.ts",
+                                "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\startup.ts"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- sanity/schemaTypes/startup.ts\n+++ sanity/schemaTypes/startup.ts\n@@ -1,6 +1,6 @@\n import {defineType,defineField} from \"sanity\";\n \n-export const author = defineType({\n+export const startup = defineType({\n     name: 'startup',\n     title: 'Startup',\n     type: 'document',",
+                    "refToolCallId": "toolu_01T7C7DxtjdtZWSFeJxsXb7a"
+                },
+                {
+                    "type": "text",
+                    "text": "Now let's also fix the trailing comma in the schema types array in the index.ts file:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01NccndwZMMjYDbTwqc8228K",
+                    "title": "",
+                    "statusText": "Text to replace not found",
+                    "status": "WARNING",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "sanity/schemaTypes/index.ts",
+                                "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\index.ts"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "I apologize for the error. Let me try again with the exact formatting from the file:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01YNfjFimoteHdaYGNi5TtJn",
+                    "title": "",
+                    "statusText": "Text to replace not found",
+                    "status": "WARNING",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "sanity/schemaTypes/index.ts",
+                                "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\index.ts"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "Let me check the exact content of the index.ts file again to make sure I'm using the correct formatting:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01FxbgBnPxTrB3TWikYeijq6",
+                    "statusText": "Viewed file",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "sanity/schemaTypes/index.ts",
+                                "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\index.ts"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "I see the issue now. The file is missing the import for the startup schema. Let's add that:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01NzrBxJsVzocU1G9yzcD9yo",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "sanity/schemaTypes/index.ts",
+                                "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\index.ts"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- sanity/schemaTypes/index.ts\n+++ sanity/schemaTypes/index.ts\n@@ -1,6 +1,6 @@\n import { type SchemaTypeDefinition } from 'sanity'\n import {author} from \"@/sanity/schemaTypes/author\";\n-\n+import {startup} from \"@/sanity/schemaTypes/startup\";\n \n export const schema: { types: SchemaTypeDefinition[] } = {\n   types: [author,startup],",
+                    "refToolCallId": "toolu_01NzrBxJsVzocU1G9yzcD9yo"
+                },
+                {
+                    "type": "text",
+                    "text": "Great! I've fixed two issues:\n\n1. In the `startup.ts` file, I changed the exported constant name from `author` to `startup` to match the file's purpose.\n2. In the `index.ts` file, I added the missing import for the `startup` schema.\n\nThese changes should resolve the TypeScript error. The issue was that in the `startup.ts` file, you were exporting a constant named `author` instead of `startup`, which was causing confusion when importing it in the index file."
+                },
+                {
+                    "type": "codePatch",
+                    "diffs": [
+                        {
+                            "path": "sanity/schemaTypes/startup.ts",
+                            "patch": "@@ -56,22 +56,23 @@\n t const \n-author\n+startup\n  = defin\n",
+                            "isNew": false,
+                            "isApplied": false,
+                            "isUnread": true
+                        },
+                        {
+                            "path": "sanity/schemaTypes/index.ts",
+                            "patch": "@@ -96,16 +96,69 @@\n uthor%22;%0A\n+import %7Bstartup%7D from %22@/sanity/schemaTypes/startup%22;\n %0A%0Aexport\n",
+                            "isNew": false,
+                            "isApplied": false,
+                            "isUnread": true
+                        }
+                    ]
+                }
+            ],
+            "context": {
+                "author": "Coding Agent"
+            },
+            "createdAt": 1743768413731,
+            "isInternal": false
+        },
+        {
+            "id": "ef49d372-ea33-4a87-8377-ce188420daf8",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "whats now"
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "sanity\\schemaTypes\\startup.ts",
+                    "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\startup.ts",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "import {defineType,defineField} from \"sanity\";\r\n\r\nexport const startup = defineType({\r\n    name: 'startup',\r\n    title: 'Startup',\r\n    type: 'document',\r\n    fields:[\r\n        defineField({\r\n            name:'title',\r\n            type: 'string'\r\n        }),\r\n        defineField({\r\n            name:'slug',\r\n            type: 'slug',\r\n            options:{\r\n                source:'title'},\r\n\r\n        }),\r\n        defineField({\r\n            name:'author',\r\n            type: 'reference',\r\n            to:{type:'author'},\r\n        }),\r\n        defineField({\r\n            name:'views',\r\n            type: 'number'\r\n        }),\r\n        defineField({\r\n            name:'description',\r\n            type: 'text'\r\n        }),\r\n        defineField({\r\n            name:'category',\r\n            type: 'string',\r\n            validation:(Rule)=>Rule.min(1).max(20).required().error(\"please enter a category\"),\r\n        }),\r\n\r\n        defineField({\r\n            name:'image',\r\n            type:'url',\r\n            validation:(Rule)=>Rule.required(),\r\n\r\n})\r\n    ],\r\n\r\n})\r\n\r\nexport class startup {\r\n}"
+                },
+                "codebaseEnabled": true
+            },
+            "createdAt": 1743768657333,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "whats now "
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "57cc7146-7a71-4b0e-b5cb-f19d810b356f",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Now that we've fixed the main issues, let's check if there are any other problems in the `startup.ts` file. I noticed there's an empty class declaration at the end of the file that might be causing additional issues:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01Bp7ZrDWUpc7iDcLqGFx5xb",
+                    "statusText": "Viewed file",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "sanity/schemaTypes/startup.ts",
+                                "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\startup.ts"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "I found another issue! There's an empty class declaration at the end of the file with the same name as the constant we just fixed. This is causing a naming conflict and will lead to TypeScript errors. Let's remove that empty class:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01BzRBxBAqrXbrUVffB8UKBp",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "sanity/schemaTypes/startup.ts",
+                                "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\startup.ts"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- sanity/schemaTypes/startup.ts\n+++ sanity/schemaTypes/startup.ts\n@@ -44,6 +44,3 @@\n     ],\n \n })\n-\n-export class startup {\n-}",
+                    "refToolCallId": "toolu_01BzRBxBAqrXbrUVffB8UKBp"
+                },
+                {
+                    "type": "text",
+                    "text": "Perfect! I've now fixed all the issues:\n\n1. Changed the exported constant name from `author` to `startup` in the `startup.ts` file to match the file's purpose.\n2. Added the missing import for the `startup` schema in the `index.ts` file.\n3. Removed the empty class declaration at the end of the `startup.ts` file that was causing a naming conflict.\n\nThese changes should resolve the TypeScript error you were encountering. The main issue was that you had both a constant and a class with the same name (`startup`), which was causing conflicts when trying to use it as a schema type definition.\n\nYour Sanity schema should now work correctly. Is there anything else you'd like me to help with or explain?"
+                },
+                {
+                    "type": "codePatch",
+                    "diffs": [
+                        {
+                            "path": "sanity/schemaTypes/startup.ts",
+                            "patch": "@@ -1056,33 +1056,4 @@\n %0D%0A%7D)\n-%0D%0A%0D%0Aexport class startup %7B%0D%0A%7D\n",
+                            "isNew": false,
+                            "isApplied": false
+                        }
+                    ]
+                }
+            ],
+            "context": {
+                "author": "Coding Agent"
+            },
+            "createdAt": 1743768661486,
+            "isInternal": false
+        },
+        {
+            "id": "75839724-1d83-4e85-aef2-d37e31c76918",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "check everything is there any potntial error with anything ?"
+                }
+            ],
+            "context": {
+                "currentFile": {
+                    "path": "sanity\\schemaTypes\\author.ts",
+                    "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\author.ts",
+                    "sources": [
+                        "opened_tab"
+                    ],
+                    "content": "import {defineType,defineField} from \"sanity\";\r\nimport {userIcon} from \"lucide-react\";\r\n\r\nexport const author = defineType({\r\n    name: 'author',\r\n    title: 'Author',\r\n    type: 'document',\r\n    icon : userIcon,\r\n    fields:[\r\n        defineField({\r\n            name:'id',\r\n            type: 'number'\r\n        }),\r\n        defineField({\r\n            name:'name',\r\n            type: 'string'\r\n        }),\r\n        defineField({\r\n            name:'username',\r\n            type: 'string'\r\n        }),\r\n        defineField({\r\n            name:'email',\r\n            type: 'string'\r\n        }),\r\n        defineField({\r\n            name:'image',\r\n            type: 'url'\r\n        }),\r\n        defineField({\r\n            name:'bio',\r\n            type: 'text'\r\n        }),\r\n    ],\r\n    preview:{\r\n        select:{\r\n            title: 'name',\r\n        }\r\n    }\r\n})"
+                },
+                "codebaseEnabled": true
+            },
+            "createdAt": 1743768826872,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "check everything is there any potntial error with anything ? "
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "8444bbb3-562a-43a7-85a6-0bb6d2ff1947",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "Let's do a thorough check of all the relevant files to ensure there are no potential errors:\n\n1. First, let's check the author.ts file again:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01Ue3aKrP3hjyuypyuC9AoUq",
+                    "statusText": "Viewed file",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "sanity/schemaTypes/author.ts",
+                                "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\author.ts"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "I notice an issue in the author.ts file. The import for `userIcon` is lowercase, but it's used as `userIcon` in the code. Let's fix this:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01M8hXYXkVntUVwZqYowb1ri",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "sanity/schemaTypes/author.ts",
+                                "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\author.ts"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- sanity/schemaTypes/author.ts\n+++ sanity/schemaTypes/author.ts\n@@ -1,11 +1,11 @@\n import {defineType,defineField} from \"sanity\";\n-import {userIcon} from \"lucide-react\";\n+import {UserIcon} from \"lucide-react\";\n \n export const author = defineType({\n     name: 'author',\n     title: 'Author',\n     type: 'document',\n-    icon : userIcon,\n+    icon : UserIcon,\n     fields:[\n         defineField({\n             name:'id',",
+                    "refToolCallId": "toolu_01M8hXYXkVntUVwZqYowb1ri"
+                },
+                {
+                    "type": "text",
+                    "text": "2. Now let's check the startup.ts file again:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01EWStcCpPqsmhQtLPy5wUoE",
+                    "statusText": "Viewed file",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "sanity/schemaTypes/startup.ts",
+                                "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\startup.ts"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "I notice a formatting issue in the startup.ts file. The closing bracket for the 'image' field is not properly aligned. Let's fix that:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01NnK7YPiyeuC7HSAhHMiZsD",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "sanity/schemaTypes/startup.ts",
+                                "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\startup.ts"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- sanity/schemaTypes/startup.ts\n+++ sanity/schemaTypes/startup.ts\n@@ -39,8 +39,7 @@\n             name:'image',\n             type:'url',\n             validation:(Rule)=>Rule.required(),\n-\n-})\n+        })\n     ],\n \n })",
+                    "refToolCallId": "toolu_01NnK7YPiyeuC7HSAhHMiZsD"
+                },
+                {
+                    "type": "text",
+                    "text": "3. Let's check the index.ts file to make sure everything is properly imported and used:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01YUSimLjwKga8Q3f3tf6Vec",
+                    "statusText": "Viewed file",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "sanity/schemaTypes/index.ts",
+                                "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\index.ts"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "I notice there's still a trailing comma in the types array in index.ts. Let's fix that:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01Dgb17Rws8CDBSM53XzUZGo",
+                    "statusText": "Change generated",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "sanity/schemaTypes/index.ts",
+                                "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\sanity\\schemaTypes\\index.ts"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "codeHunk",
+                    "lineBasedDiff": "--- sanity/schemaTypes/index.ts\n+++ sanity/schemaTypes/index.ts\n@@ -3,5 +3,5 @@\n import {startup} from \"@/sanity/schemaTypes/startup\";\n \n export const schema: { types: SchemaTypeDefinition[] } = {\n-  types: [author,startup,],\n+  types: [author, startup],\n }",
+                    "refToolCallId": "toolu_01Dgb17Rws8CDBSM53XzUZGo"
+                },
+                {
+                    "type": "text",
+                    "text": "After a thorough review, I've fixed several potential issues:\n\n1. In `author.ts`:\n   - Fixed the import and usage of `UserIcon` (changed from lowercase `userIcon` to the correct `UserIcon`)\n\n2. In `startup.ts`:\n   - Fixed the formatting of the 'image' field's closing bracket\n   - Previously removed the duplicate `export class startup {}` declaration\n\n3. In `index.ts`:\n   - Removed the trailing comma in the types array\n   - Added proper spacing between array elements\n\nThese changes should resolve all potential TypeScript errors and improve code consistency. The main issues were:\n\n1. The naming conflict in startup.ts (fixed earlier)\n2. The case mismatch in the UserIcon import\n3. Formatting issues that could lead to confusion\n4. The trailing comma in the types array\n\nYour Sanity schema should now be properly structured and free of TypeScript errors."
+                },
+                {
+                    "type": "codePatch",
+                    "diffs": [
+                        {
+                            "path": "sanity/schemaTypes/startup.ts",
+                            "patch": "@@ -1034,18 +1034,24 @@\n red(),%0D%0A\n-%0D%0A\n+        \n %7D)%0D%0A    \n",
+                            "isNew": false,
+                            "isApplied": false,
+                            "isUnread": true
+                        },
+                        {
+                            "path": "sanity/schemaTypes/index.ts",
+                            "patch": "@@ -231,16 +231,16 @@\n hor,\n+ \n startup\n-,\n %5D,%0A%7D\n",
+                            "isNew": false,
+                            "isApplied": false,
+                            "isUnread": true
+                        },
+                        {
+                            "path": "sanity/schemaTypes/author.ts",
+                            "patch": "@@ -49,17 +49,17 @@\n import %7B\n-u\n+U\n serIcon%7D\n@@ -196,17 +196,17 @@\n  icon : \n-u\n+U\n serIcon,\n",
+                            "isNew": false,
+                            "isApplied": false,
+                            "isUnread": true
+                        }
+                    ]
+                }
+            ],
+            "context": {
+                "author": "Coding Agent"
+            },
+            "createdAt": 1743768831031,
+            "isInternal": false
+        }
+    ],
+    "isAgent": true,
+    "isNameGenerated": true,
+    "isCustomAgent": false
+}
+}

@@ -1,0 +1,131 @@
+{
+    "checksum": "d53910427a49b98874239b2d1c74b7418a81c1f2ea5b62c0abb57e8a6f02f6ef",
+    "data": {
+    "id": "32c4185a-a59c-413c-8833-aa378c8ff013",
+    "createdAt": 1744180910283,
+    "updatedAt": 1744181076454,
+    "title": "as u can see im missing two component in compon...",
+    "messages": [
+        {
+            "id": "d0c58857-0f7a-45a0-bb1b-49a1bb34ed8a",
+            "role": "user",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "as u can see im missing two component in componet/ui , check yc_directory-main to confierm which two and tell me how to install them through command line as i have to use them now"
+                }
+            ],
+            "context": {
+                "codebaseEnabled": true
+            },
+            "createdAt": 1744181057934,
+            "isInternal": false,
+            "rawContent": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "content": [
+                            {
+                                "type": "text",
+                                "text": "as u can see im missing two component in componet/ui , check yc_directory-main to confierm which two and tell me how to install them through command line as i have to use them now"
+                            }
+                        ]
+                    }
+                ]
+            }
+        },
+        {
+            "id": "b4f3c47a-280d-4e73-9f43-1f722c50778d",
+            "role": "assistant",
+            "content": [
+                {
+                    "type": "text",
+                    "text": "I'll help you identify the missing UI components and provide instructions on how to install them. Let me first check the components in the UI directory to see what might be missing."
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01FPmkS4B7xRo79ALyFsCpEB",
+                    "statusText": "Viewed folder",
+                    "status": "SUCCESS",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "components/ui",
+                                "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\components\\ui"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "Now let me check the main YC directory to see what UI components should be there but are missing from your current setup:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_0174Je4FNTbSpD2rVvDG45Jm",
+                    "statusText": "No references found",
+                    "status": "SUCCESS",
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "Let me try a different approach to find the UI components:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01QDPs96wEdD1dex8xUVcUVX",
+                    "title": "",
+                    "statusText": "File not found",
+                    "status": "WARNING",
+                    "context": {
+                        "files": [
+                            {
+                                "path": "-main/components/ui",
+                                "fsPath": "C:\\Users\\Aarish\\Desktop\\yc_directory\\-main\\components\\ui"
+                            }
+                        ]
+                    },
+                    "isHidden": false
+                },
+                {
+                    "type": "text",
+                    "text": "Let me try to find the correct path for the reference directory:"
+                },
+                {
+                    "type": "toolCall",
+                    "toolCallId": "toolu_01HmTtC9yuNzETGzruMuz17W",
+                    "title": "",
+                    "statusText": "Failed",
+                    "status": "ERROR",
+                    "isHidden": false
+                }
+            ],
+            "context": {
+                "author": "Coding Agent",
+                "operationId": "121f352d-2d29-4e81-9cdc-cd9dfe025263"
+            },
+            "createdAt": 1744181061460,
+            "isInternal": false
+        },
+        {
+            "id": "f9cae541-e166-4b42-ab04-48df19ce7645",
+            "role": "system",
+            "content": [
+                {
+                    "type": "errorText",
+                    "text": "Internal server error. Please try again later.\nOperation ID: 121f352d-2d29-4e81-9cdc-cd9dfe025263\nUser ID: 78c55999-e132-48bb-8ba9-ca4b80a9c852",
+                    "allowRegenerate": true
+                }
+            ],
+            "createdAt": 1744181076454,
+            "isInternal": false
+        }
+    ],
+    "isAgent": true,
+    "isCustomAgent": false,
+    "isUnitTestsAgent": false,
+    "autoApply": false
+}
+}
