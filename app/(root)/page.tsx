@@ -9,7 +9,12 @@ export default async function Home({
 }: {
   searchParams: Promise<{ query?: string }>;
 }) {
-  const query = (await searchParams).query;
+  const resolvedSearchParams = await searchParams;
+  console.log("searchParams:", resolvedSearchParams);
+  console.log("type:", typeof resolvedSearchParams);
+  console.log("constructor:", resolvedSearchParams?.constructor?.name);
+  
+  const query = resolvedSearchParams.query;
   const params = { search: query || null };
 
   const session = await auth();
