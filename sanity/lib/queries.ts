@@ -88,6 +88,26 @@ export const STARTUPS_BY_AUTHOR_QUERY =
   image,
 }`);
 
+export const STARTUP_BY_AUTHOR_ID = defineQuery(`
+*[_type == "startup" && author._ref == $id] | order(_createdAt desc) {
+  _id, 
+  title, 
+  slug,
+  _createdAt,
+  author -> {
+    _id, name, image, bio
+  }, 
+  views,
+  description,
+  category,
+  image,
+}`);
+
+export const STARTUP_VIEW_BY_ID = defineQuery(`
+*[_type == "startup" && _id == $id][0]{
+  _id, views
+}`);
+
 export const PLAYLIST_BY_SLUG_QUERY =
   defineQuery(`*[_type == "playlist" && slug.current == $slug][0]{
   _id,

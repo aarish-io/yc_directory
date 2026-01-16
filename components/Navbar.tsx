@@ -24,7 +24,7 @@ const Navbar =async () => {
                             </Link>
                             <form action={async()=> {
                                 "use server";
-                                await signOut({redirect:"/"});
+                                await signOut({redirectTo:"/"});
                             }} >
                                 <span className="max-sm:hidden">Logout</span>
                                 <LogOut className="size-6 sm:hidden text-red-700"/>

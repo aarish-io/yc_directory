@@ -19,7 +19,7 @@ const StartupForm = () => {
     const router = useRouter();
 
 
-    const handleFormSubmit = async (prevState:any, formData:FormData) => {
+    const handleFormSubmit = async (prevState: { error: string; status: string } | null, formData: FormData) => {
         try {
             const formValues = {
                 title: formData.get('title') as string,
@@ -35,10 +35,7 @@ const StartupForm = () => {
             
 
             if(results.status === "SUCCESS") {
-                toast({
-                    title: "Success",
-                    description: "Your startup pitch has been created successfully",
-                });
+                toast.success("Your startup pitch has been created successfully");
             }
             router.push(`/startups/${results?._id}`);
             return results;
@@ -48,33 +45,23 @@ const StartupForm = () => {
                 const fieldErrors = error.flatten().fieldErrors;
                 setError(fieldErrors as unknown as Record<string, string>);
 
-                toast({
-                    title: "Error",
-                    description: "Please check your inputs and try again",
-                    variant: "destructive",
-                });
+                toast.error("Please check your inputs and try again");
                 return {
-                    ...prevState, 
                     error: "Validation failed", 
                     status: "ERROR"
                 };
             }
 
-            toast({
-                title: "Error",
-                description: "An unexpected error has occurred",
-                variant: "destructive",
-            });
+            toast.error("An unexpected error has occurred");
             
             return {
-                ...prevState,
                 error: 'Unexpected error',
                 status: 'ERROR',
             };
         }
     }
 
-    const [state,formAction , isPending] = useActionState (handleFormSubmit,{error:'',status:"Initial"});
+    const [, formAction , isPending] = useActionState (handleFormSubmit,{error:'',status:"Initial"});
 
     return (
         <form action={formAction} className="startup-form">

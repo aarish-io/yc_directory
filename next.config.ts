@@ -16,7 +16,7 @@ const nextConfig: NextConfig = {
     //     ppr: true,
     // },
     devIndicators:{
-        position: "bottom-right",
+        buildActivityPosition: "bottom-right",
     }
 };
 

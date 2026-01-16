@@ -6,10 +6,10 @@ import slugify from "slugify";
 import {writeClient} from "@/sanity/lib/write-client";
 
 export const createPitch = async(
-    state:any,
+    state: unknown,
     form: FormData,
-    pitch:string,
-)=>{
+    pitch: string,
+) => {
     const session = await auth();
 
     if(!session){
@@ -45,7 +45,7 @@ export const createPitch = async(
         }
 
         console.log('Creating startup with data:', startup);
-        const result = await writeClient.create({_type:'startup',...startup});
+        const result = await writeClient.create(startup);
         console.log('Sanity create result:', result);
 
         return parseServerActionResponse({

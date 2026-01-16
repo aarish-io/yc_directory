@@ -8,7 +8,7 @@ import UserStartups from "@/components/UserStartups";
 import {StartupCardSkeleton} from "@/components/StartupCard";
 
 
-const Page =async ({params}: {params: {id: string}}) => {
+const Page =async ({params}: {params: Promise<{id: string}>}) => {
 
     const id = (await params).id;
     const session = await auth();
@@ -34,7 +34,7 @@ const Page =async ({params}: {params: {id: string}}) => {
                 </div>
 
                 <div className="flex flex-1 flex-col gap-5 lg:-mt-5">
-                    <p className="text-30-bold">{session.id === id?"Your":"All"} Startups</p>
+                    <p className="text-30-bold">{session?.id === id?"Your":"All"} Startups</p>
 
                     <ul className="card_grid-sm">
                         <Suspense fallback={<StartupCardSkeleton/>}>

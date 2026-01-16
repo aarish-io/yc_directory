@@ -22,7 +22,7 @@ export default async function Home({
     const { data } = await sanityFetch({ query: STARTUPS_QUERY, params });
     posts = data || [];
   } catch (error) {
-    console.log("Sanity not configured, using mock data");
+    console.log("Sanity not configured, using mock data", error);
     // Mock data for development
     posts = [
       {
