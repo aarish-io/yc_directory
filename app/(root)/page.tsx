@@ -16,7 +16,33 @@ export default async function Home({
 
   console.log(session?.id);
 
-  const { data: posts } = await sanityFetch({ query: STARTUPS_QUERY, params });
+  let posts = [];
+  
+  try {
+    const { data } = await sanityFetch({ query: STARTUPS_QUERY, params });
+    posts = data || [];
+  } catch (error) {
+    console.log("Sanity not configured, using mock data");
+    // Mock data for development
+    posts = [
+      {
+        _id: "1",
+        title: "Sample Startup",
+        slug: { current: "sample-startup" },
+        _createdAt: new Date().toISOString(),
+        author: {
+          _id: "author1",
+          name: "John Doe",
+          image: "https://via.placeholder.com/150",
+          bio: "Entrepreneur"
+        },
+        views: 42,
+        description: "This is a sample startup for development",
+        category: "Technology",
+        image: "https://via.placeholder.com/400x200"
+      }
+    ];
+  }
 
   return (
     <>
@@ -50,7 +76,8 @@ export default async function Home({
         </ul>
       </section>
 
-      <SanityLive />
+      {/* Only render SanityLive if Sanity is properly configured */}
+      {process.env.NEXT_PUBLIC_SANITY_PROJECT_ID !== 'your-project-id' && <SanityLive />}
     </>
   );
 }

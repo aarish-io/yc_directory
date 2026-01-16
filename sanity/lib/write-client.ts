@@ -13,5 +13,5 @@ export const writeClient = createClient({
 })
 
 if(!writeClient.config().token){
-    throw new Error('Sanity client is missing a token')
+    console.warn('Sanity client is missing a token - write operations will not work')
 }

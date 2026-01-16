@@ -1,0 +1,6 @@
+@echo off
+echo Building YC Directory Docker image...
+docker build -t yc-directory .
+
+echo Starting development server...
+docker-compose up
