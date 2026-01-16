@@ -16,8 +16,10 @@ const nextConfig: NextConfig = {
     //     ppr: true,
     // },
     devIndicators:{
-        buildActivityPosition: "bottom-right",
-    }
+        position: "bottom-right",
+    },
+    // Add empty turbopack config to resolve Sentry webpack conflict
+    turbopack: {}
 };
 
 export default withSentryConfig(nextConfig, {
